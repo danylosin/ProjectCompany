@@ -25,16 +25,18 @@ namespace ProjectCompany
                 this.OutputSkillsOfContribution(contribution);
                 Console.WriteLine();
             }
+            Console.WriteLine("_____________");
         }
 
         public void OutputAboutProject(Project project)
         {
             Console.WriteLine("Info about project " + project.Title);
             foreach (Contribution contribution in project.Contributions) {
-                Console.WriteLine(contribution.Title + ". It used next technologies: ");
+                Console.Write(contribution.Title + ". It used next technologies: ");
                 this.OutputSkillsOfContribution(contribution);
-                Console.WriteLine("The contributor is " + contribution.Employee.Name);
+                Console.WriteLine(". The contributor is " + contribution.Employee.Name);
             }
+            Console.WriteLine("_____________");
         }
 
         protected void OutputSkillsOfContribution(Contribution contribution)
@@ -42,7 +44,6 @@ namespace ProjectCompany
             foreach (Skill skill in contribution.Skills) {
                 Console.Write(skill.title + " ");
             }
-            Console.WriteLine("");
         }
     }
 }

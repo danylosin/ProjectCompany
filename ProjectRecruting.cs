@@ -23,47 +23,36 @@ namespace ProjectCompany
         {
             Console.Write(this.project.Title + " needs next skills: ");
             foreach (Skill skill in this.skills) {
-                Console.Write(skill.title);
+                Console.Write(skill.title + " ");
             }
             Console.WriteLine();
             Console.WriteLine("Found next employees: ");
             foreach (Employee employee in this.GetSortedEmployeesByCompetensy()) {
-                Console.Write(employee.Name);
-                Console.Write(". He has next skills: ");
-                foreach (Skill skill in employee.Skills) {
-                    Console.Write(skill.title + " ");
-                }
+                this.OutputInfoAboutEmployee(employee);
             }
         }
 
         protected List<Employee> GetSortedEmployeesByCompetensy()
         {
-            var sortedEmployees = this.allEmployees.OrderBy(emp => emp.Competensy).ToList();
+            this.AssignCompetensyToAllEmployees();
 
-            return sortedEmployees;
+            return this.allEmployees.OrderByDescending(emp => emp.Competensy).ToList();
         }
 
         protected void AssignCompetensyToAllEmployees()
         {
             foreach (Employee employee in this.allEmployees) {
-                foreach (Skill skill in this.skills) {
-                    this.calculateEmployeeCompetensy(employee);
-                }
+                employee.CalculateEmployeeCompetensy(this.skills);
             }
-
         }
 
-         protected float calculateEmployeeCompetensy(Employee employee)
-         {
-            int quanitityOfMatchedSkills = 0;
-            foreach (Skill skill in this.skills) {
-                if (employee.Skills.Contains(skill)) {
-                    quanitityOfMatchedSkills++;
-                }
+        protected void OutputInfoAboutEmployee(Employee employee)
+        {
+            Console.Write(employee.Name + ". His competensy is " + employee.Competensy + ". He has next skills: ");
+            foreach (Skill skill in employee.Skills) {
+                Console.Write(skill.title + " ");
             }
-            int competensy = quanitityOfMatchedSkills / this.skills.Count;
-            
-            return competensy;
-         }
+            Console.WriteLine();
+        }
     }
 }

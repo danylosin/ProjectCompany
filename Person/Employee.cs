@@ -8,7 +8,7 @@ namespace ProjectCompany.Person
         public string Name { get; private set; }
         public List<Skill> Skills { get; private set; }
         public List<Contribution> Contributions { get; private set; }
-        public float Competensy { get; private set; }
+        public double Competensy { get; private set; }
 
         public Employee(string name)
         {
@@ -19,12 +19,16 @@ namespace ProjectCompany.Person
 
         public void AddContribution(Contribution contribution)
         {
-            this.Contributions.Add(contribution);
+            if (!this.Contributions.Contains(contribution)) {
+                this.Contributions.Add(contribution);
+            }
         }
         
         public void AddSkill(Skill skill)
         {
-            this.Skills.Add(skill);
+            if (!this.Skills.Contains(skill)) {
+                this.Skills.Add(skill);
+            }
         }
 
         public void CalculateEmployeeCompetensy(List<Skill> skills)
@@ -35,7 +39,8 @@ namespace ProjectCompany.Person
                     quanitityOfMatchedSkills++;
                 }
             }
-            int competensy = quanitityOfMatchedSkills / skills.Count;
+            
+            double competensy = (double)quanitityOfMatchedSkills / skills.Count;
             
             this.Competensy = competensy;
          }
