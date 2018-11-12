@@ -2,16 +2,11 @@ namespace ProjectCompany.Person
 {
     public class Skill
     {
-       protected string title;
+       public string title { get; private set; }
 
        public Skill(string title) 
        {
            this.title = title;
-       }
-
-       public string GetTitle()
-       {
-           return this.title;
        }
     }
 }

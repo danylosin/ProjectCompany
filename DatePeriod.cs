@@ -4,8 +4,8 @@ namespace ProjectCompany
 {
     public class DatePeriod
     {
-        protected DateTime from;
-        protected DateTime to;
+        public DateTime from { get; private set; }
+        public DateTime to { get; private set; }
 
         public DatePeriod(DateTime from, DateTime to)
         {

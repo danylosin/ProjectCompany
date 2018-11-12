@@ -6,30 +6,28 @@ namespace ProjectCompany.Activity
 {
     public class Contribution
     {
-        protected Project project;
-        protected string title;
-        protected List<Skill> skills;
-        protected Employee employee;
+        public string Title { get; private set; }
+        public Project Project { get; private set; }
+        public List<Skill> Skills  { get; private set; }
+        public Employee Employee { get; set; }
+        public DatePeriod DatePeriod { get; private set; }
 
-        public Contribution(string title, Project project)
+        public Contribution(string title, Project project, DatePeriod datePeriod)
         {
-            this.title = title;
-            this.project = project;
-        }
-
-        public Project GetProject()
-        {
-            return this.project;
-        }
-
-        public string GetTitle()
-        {
-            return this.title;
+            this.Title = title;
+            this.Project = project;
+            this.Skills = new List<Skill>();
+            this.DatePeriod = datePeriod;
         }
 
         public void SetEmployee(Employee employee)
         {
-            this.employee = employee;
+            this.Employee = employee;
+        }
+
+        public void AddSkill(Skill skill)
+        {
+            this.Skills.Add(skill);
         }
     }
 }
