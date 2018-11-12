@@ -10,31 +10,39 @@ namespace ProjectCompany
         static void Main(string[] args)
         {
             Skill skillCSharp = new Skill("c#");
-            Skill skillAngular = new Skill("angular");
-
+            Skill skillAngular = new Skill("Angular");
+            Skill skillReact = new Skill("React");
             Employee employeeBob = new Employee("Bob");
             Employee employeeDavid = new Employee("David");
+            Employee employeeMike = new Employee("Mike");
+
+            employeeBob.AddSkill(skillCSharp);
+            employeeDavid.AddSkill(skillCSharp);
+            employeeDavid.AddSkill(skillAngular);
+            employeeMike.AddSkill(skillReact);
+
 
             Report report = new Report();
 
-            employeeBob.AddSkill(skillCSharp);
-
-            employeeDavid.AddSkill(skillCSharp);
-            employeeDavid.AddSkill(skillAngular);
+            DatePeriod datePeriod = new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11));
 
             Project project = new Project(
                 "ProjectCompany", 
-                new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11))
+                datePeriod
             );
 
             Contribution contribution = new Contribution(
                 "Writing backend", 
                 project,
-                new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11))
+                datePeriod
             );
-
+            Contribution otherContribution = new Contribution(
+                "Writing frontend",
+                project,
+                datePeriod
+            );
             contribution.AddSkill(skillCSharp);
-            contribution.SetEmployee(employeeBob);
+            contribution.Employee = employeeBob;
 
             employeeBob.AddContribution(contribution);
 
@@ -44,18 +52,20 @@ namespace ProjectCompany
                 project, 
                 new List<Skill>(){
                     skillAngular,
-                    skillCSharp
+                    skillCSharp,
+                    skillReact
                 }, 
                 new List<Employee>(){
                     employeeBob, 
-                    employeeDavid
-                    }, 
-                2);
-
+                    employeeDavid,
+                    employeeMike
+                }, 
+                3
+            );
             report.OutputAboutEmployee(employeeBob);
 
             report.OutputAboutProject(project);
-            
+
             projectRecruting.Output();
         }
     }

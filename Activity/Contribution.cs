@@ -19,12 +19,7 @@ namespace ProjectCompany.Activity
             this.Skills = new List<Skill>();
             this.DatePeriod = datePeriod;
         }
-
-        public void SetEmployee(Employee employee)
-        {
-            this.Employee = employee;
-        }
-
+        
         public void AddSkill(Skill skill)
         {
             this.Skills.Add(skill);
