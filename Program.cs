@@ -9,17 +9,18 @@ namespace ProjectCompany
 
         static void Main(string[] args)
         {
-            Skill skill1 = new Skill("c#");
-            Skill skill2 = new Skill("angular");
+            Skill skillCSharp = new Skill("c#");
+            Skill skillAngular = new Skill("angular");
 
-            Employee employee = new Employee("Bob");
-            Employee davidEmployee = new Employee("David");
+            Employee employeeBob = new Employee("Bob");
+            Employee employeeDavid = new Employee("David");
+
             Report report = new Report();
 
-            employee.AddSkill(skill1);
+            employeeBob.AddSkill(skillCSharp);
 
-            davidEmployee.AddSkill(skill1);
-            davidEmployee.AddSkill(skill2);
+            employeeDavid.AddSkill(skillCSharp);
+            employeeDavid.AddSkill(skillAngular);
 
             Project project = new Project(
                 "ProjectCompany", 
@@ -32,24 +33,29 @@ namespace ProjectCompany
                 new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11))
             );
 
-            contribution.AddSkill(skill1);
-            contribution.SetEmployee(employee);
+            contribution.AddSkill(skillCSharp);
+            contribution.SetEmployee(employeeBob);
 
-            employee.AddContribution(contribution);
+            employeeBob.AddContribution(contribution);
 
             project.AddContribution(contribution);
             
-            report.OutputAboutEmployee(employee);
-
-            report.OutputAboutProject(project);
-
             ProjectRecruting projectRecruting = new ProjectRecruting(
                 project, 
                 new List<Skill>(){
-                    skill1,
-                    skill2
+                    skillAngular,
+                    skillCSharp
                 }, 
-                new List<Employee>(){employee, davidEmployee});
+                new List<Employee>(){
+                    employeeBob, 
+                    employeeDavid
+                    }, 
+                2);
+
+            report.OutputAboutEmployee(employeeBob);
+
+            report.OutputAboutProject(project);
+            
             projectRecruting.Output();
         }
     }

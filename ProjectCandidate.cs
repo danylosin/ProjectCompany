@@ -10,7 +10,7 @@ namespace ProjectCompany
         public ProjectCandidate(Employee employee, float skillCoverage)
         {
             this.employee = employee;
-            this.skillCoverage;
+            this.skillCoverage = skillCoverage;
         }
     }
 }

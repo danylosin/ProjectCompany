@@ -6,12 +6,6 @@ namespace ProjectCompany
 {
     public class Report
     {
-        
-        public Report()
-        {
-
-        }
-
         public void OutputAboutEmployee(Employee employee)
         {
             Console.WriteLine(employee.Name + "'s contribution: ");

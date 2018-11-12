@@ -8,7 +8,6 @@ namespace ProjectCompany.Person
         public string Name { get; private set; }
         public List<Skill> Skills { get; private set; }
         public List<Contribution> Contributions { get; private set; }
-        public double Competensy { get; private set; }
 
         public Employee(string name)
         {
@@ -30,19 +29,5 @@ namespace ProjectCompany.Person
                 this.Skills.Add(skill);
             }
         }
-
-        public void CalculateEmployeeCompetensy(List<Skill> skills)
-         {
-            int quanitityOfMatchedSkills = 0;
-            foreach (Skill skill in skills) {
-                if (this.Skills.Contains(skill)) {
-                    quanitityOfMatchedSkills++;
-                }
-            }
-            
-            double competensy = (double)quanitityOfMatchedSkills / skills.Count;
-            
-            this.Competensy = competensy;
-         }
     }
 }

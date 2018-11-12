@@ -11,12 +11,14 @@ namespace ProjectCompany
         protected Project project;
         protected List<Skill> skills;
         protected List<Employee> allEmployees;
+        protected int limitOfEmployees;
 
-        public ProjectRecruting(Project project, List<Skill> skills, List<Employee> employees)
+        public ProjectRecruting(Project project, List<Skill> skills, List<Employee> employees, int limit)
         {
             this.project = project;
             this.skills = skills;
             this.allEmployees = employees;
+            this.limitOfEmployees = limit;
         }
 
         public void Output()
@@ -27,28 +29,36 @@ namespace ProjectCompany
             }
             Console.WriteLine();
             Console.WriteLine("Found next employees: ");
-            foreach (Employee employee in this.GetSortedEmployeesByCompetensy()) {
-                this.OutputInfoAboutEmployee(employee);
+            foreach (ProjectCandidate projectCandidate in this.GetProjectCandidates()) {
+                this.OutputInfoAboutProjectCandidate(projectCandidate);
             }
         }
 
-        protected List<Employee> GetSortedEmployeesByCompetensy()
+        protected List<ProjectCandidate> GetProjectCandidates()
         {
-            this.AssignCompetensyToAllEmployees();
-
-            return this.allEmployees.OrderByDescending(emp => emp.Competensy).ToList();
+             return this.allEmployees
+                .Select((emp) => new ProjectCandidate(emp, this.CalculateEmployeeSkillCoverage(emp)))
+                .OrderByDescending(ProjectCandidate => ProjectCandidate.skillCoverage)
+                .Take(this.limitOfEmployees)
+                .ToList();
         }
 
-        protected void AssignCompetensyToAllEmployees()
-        {
-            foreach (Employee employee in this.allEmployees) {
-                employee.CalculateEmployeeCompetensy(this.skills);
+        private float CalculateEmployeeSkillCoverage(Employee employee)
+         {
+            int quanitityOfMatchedSkills = 0;
+            foreach (Skill skill in this.skills) {
+                if (employee.Skills.Contains(skill)) {
+                    quanitityOfMatchedSkills++;
+                }
             }
-        }
+            
+            return (float)quanitityOfMatchedSkills / skills.Count;
+         }
 
-        protected void OutputInfoAboutEmployee(Employee employee)
+        protected void OutputInfoAboutProjectCandidate(ProjectCandidate projectCandidate)
         {
-            Console.Write(employee.Name + ". His competensy is " + employee.Competensy + ". He has next skills: ");
+            Employee employee = projectCandidate.employee;
+            Console.Write(employee.Name + ". His skill coverage is " + projectCandidate.skillCoverage + ". He has next skills: ");
             foreach (Skill skill in employee.Skills) {
                 Console.Write(skill.title + " ");
             }
