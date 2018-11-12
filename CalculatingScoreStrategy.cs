@@ -1,7 +1,9 @@
+using ProjectCompany.Person;
+
 namespace ProjectCompany
 {
     public interface CalculatingScoreStrategy
     {
-        float calculateScore();
+        float calculateScore(Employee employee);
     }
 }

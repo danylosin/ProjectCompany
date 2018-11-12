@@ -5,12 +5,12 @@ namespace ProjectCompany
     public struct ProjectCandidate
     {
         public Employee Employee { get; private set; }
-        public float SkillCoverage { get; private set; } //score
+        public float Score { get; private set; } //score
 
-        public ProjectCandidate(Employee employee, float skillCoverage)
+        public ProjectCandidate(Employee employee, float Score)
         {
             this.Employee = employee;
-            this.SkillCoverage = skillCoverage;
+            this.Score = Score;
         }
     }
 }

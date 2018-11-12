@@ -1,8 +1,12 @@
+using ProjectCompany.Person;
+using System.Collections.Generic;
 namespace ProjectCompany
 {
     public class CalculateScoreBySkillCoverage : CalculatingScoreStrategy
     {
-        public float calculateScore()
+        protected List<Skill> skills;
+        
+        public float calculateScore(Employee employee)
         {
             int quanitityOfMatchedSkills = 0;
             foreach (Skill skill in this.skills) {

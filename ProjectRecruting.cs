@@ -41,7 +41,7 @@ namespace ProjectCompany
         {
             return this.allEmployees
                 .Select(this.GetProjectCandidate)
-                .OrderByDescending(ProjectCandidate => ProjectCandidate.SkillCoverage)
+                .OrderByDescending(ProjectCandidate => ProjectCandidate.Score)
                 .Take(this.limitOfEmployees)
                 .ToList();
         }
@@ -66,7 +66,7 @@ namespace ProjectCompany
         protected void OutputInfoAboutProjectCandidate(ProjectCandidate projectCandidate)
         {
             Employee employee = projectCandidate.Employee;
-            Console.Write(employee.Name + ". His skill coverage is " + Math.Round(projectCandidate.SkillCoverage, 2) + ". He has next skills: ");
+            Console.Write(employee.Name + ". His skill coverage is " + Math.Round(projectCandidate.Score, 2) + ". He has next skills: ");
             
             foreach (Skill skill in employee.Skills) {
                 Console.Write(skill.Title + " ");
