@@ -5,7 +5,14 @@ namespace ProjectCompany
     public class CalculateScoreBySkillCoverage : CalculatingScoreStrategy
     {
         protected List<Skill> skills;
-        
+        protected Employee employee;
+
+        public CalculateScoreBySkillCoverage(Employee employee, List<Skill> skills)
+        {
+            this.employee = employee;
+            this.skills = skills;
+        }
+
         public float calculateScore(Employee employee)
         {
             int quanitityOfMatchedSkills = 0;
@@ -13,8 +20,7 @@ namespace ProjectCompany
                 if (employee.Skills.Contains(skill)) {
                     quanitityOfMatchedSkills++;
                 }
-            }
-            
+            }            
             return (float)quanitityOfMatchedSkills / skills.Count;
         }
     }
