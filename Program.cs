@@ -2,6 +2,7 @@ using System;
 using ProjectCompany.Activity;
 using ProjectCompany.Person;
 using System.Collections.Generic;
+using System.Linq;
 namespace ProjectCompany
 {
     class Program
@@ -9,6 +10,15 @@ namespace ProjectCompany
 
         static void Main(string[] args)
         {
+            using(AppContext appContext = new AppContext()) {
+                 Project project = new Project("TEST PROJECT");
+                 Contribution contribution = new Contribution("TEST CONTRIBUTION", project);
+                 appContext.projects.Add(project);
+                 appContext.contributions.Add(contribution);
+                 appContext.SaveChanges();
+                 Console.WriteLine(appContext.projects.Find(10).Contributions.First().Id);
+            }
+            /* 
             Skill skillCSharp = new Skill("c#");
             Skill skillAngular = new Skill("Angular");
             Skill skillReact = new Skill("React");
@@ -20,8 +30,8 @@ namespace ProjectCompany
             employeeDavid.AddSkill(skillCSharp);
             employeeDavid.AddSkill(skillAngular);
             employeeMike.AddSkill(skillReact);
-
-
+            */
+            /* 
             Report report = new Report();
 
             DatePeriod datePeriod = new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11));
@@ -67,6 +77,7 @@ namespace ProjectCompany
             report.OutputAboutProject(project);
 
             projectRecruting.Output();
+            */
         }
     }
 }
