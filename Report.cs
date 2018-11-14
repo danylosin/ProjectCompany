@@ -1,6 +1,7 @@
 using ProjectCompany.Activity;
 using ProjectCompany.Person;
 using System;
+using System.Linq;
 
 namespace ProjectCompany
 {
@@ -9,7 +10,6 @@ namespace ProjectCompany
         public void OutputAboutEmployee(Employee employee)
         {
             Console.WriteLine(employee.Name + "'s contribution: ");
-
             foreach (Contribution contribution in employee.Contributions) {
                 Console.Write(
                     contribution.Title + 
@@ -18,7 +18,7 @@ namespace ProjectCompany
                     ". It used next technologies: "
                 );
 
-                //this.OutputSkillsOfContribution(contribution);
+                this.OutputSkillsOfContribution(contribution);
                 Console.WriteLine();
             }
 

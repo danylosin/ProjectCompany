@@ -14,13 +14,21 @@ namespace ProjectCompany
         {
             using(AppContext appContext = new AppContext()) {
                 Report report = new Report();
+                /* 
                 Employee employeeDan = appContext
                         .employees.Include(e => e.Contributions)
                         .Include(e => e.EmployeeSkills)
                         .ThenInclude(es => es.Skill)
                         .First();
-                        
-                //Console.Write(employeeDan.EmployeeSkills.First().Skill.Title);
+                 */
+                 Employee employeeDan = appContext
+                        .employees
+                        .Include(e => e.Contributions)
+                        .ThenInclude(c => c.Project)
+                        .Include(e => e.Contributions)
+                        .ThenInclude(c => c.ContributionSkills)
+                        .ThenInclude(cs => cs.Skill)
+                        .First();       
                 report.OutputAboutEmployee(employeeDan);
             }
             

@@ -4,6 +4,7 @@ using ProjectCompany.Person;
 
 namespace ProjectCompany.Activity
 {
+    [Table("contributions_skills")]
     public class ContributionSkill
     {
         [Column("contribution_id")]
