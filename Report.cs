@@ -8,7 +8,7 @@ namespace ProjectCompany
     {
         public void OutputAboutEmployee(Employee employee)
         {
-            Console.WriteLine(employee.name + "'s contribution: ");
+            Console.WriteLine(employee.Name + "'s contribution: ");
 
             foreach (Contribution contribution in employee.Contributions) {
                 Console.Write(
@@ -18,7 +18,7 @@ namespace ProjectCompany
                     ". It used next technologies: "
                 );
 
-                this.OutputSkillsOfContribution(contribution);
+                //this.OutputSkillsOfContribution(contribution);
                 Console.WriteLine();
             }
 
@@ -32,17 +32,18 @@ namespace ProjectCompany
             foreach (Contribution contribution in project.Contributions) {
                 Console.Write(contribution.Title + ". It used next technologies: ");
                 this.OutputSkillsOfContribution(contribution);
-                Console.WriteLine(". The contributor is " + contribution.Employee.name);
+                Console.WriteLine(". The contributor is " + contribution.Employee.Name);
             }
 
             Console.WriteLine("_____________");
         }
-
+        
         protected void OutputSkillsOfContribution(Contribution contribution)
         {
-            foreach (Skill skill in contribution.Skills) {
-                Console.Write(skill.Title + " ");
+            foreach (ContributionSkill contributionSkill in contribution.ContributionSkills) {
+                Console.Write(contributionSkill.Skill.Title + " ");
             }
         }
+        
     }
 }

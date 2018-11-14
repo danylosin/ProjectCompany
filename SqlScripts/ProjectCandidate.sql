@@ -22,4 +22,6 @@ FROM employees emp
 JOIN skills s ON (s.id = 5 OR s.id = 9) 
 JOIN employees_skills emp_sk ON emp_sk.employee_id = emp.id
 GROUP BY (emp.id)
-ORDER BY (skill_coverage) DESCОб
+ORDER BY (skill_coverage) DESC
+
+
