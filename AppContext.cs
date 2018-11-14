@@ -23,7 +23,7 @@ namespace ProjectCompany
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            this.OnContributionModelCreating(modelBuilder);
+            this.OnContributionAndProjectModelCreating(modelBuilder);
 
             this.OnEmployeeSkillCreating(modelBuilder); 
 
@@ -31,12 +31,32 @@ namespace ProjectCompany
         }
 
 
-        protected void OnContributionModelCreating(ModelBuilder modelBuilder)
+        protected void OnContributionAndProjectModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contribution>()
                 .HasOne<Project>(c => c.Project)
                 .WithMany(p => p.Contributions)
                 .HasForeignKey(c => c.ProjectId);
+
+            modelBuilder.Entity<Contribution>()
+                .OwnsOne(
+                    c => c.DatePeriod,
+                    dp =>
+                    {
+                        dp.Property(p => p.From).HasColumnName("from_date");
+                        dp.Property(p => p.To).HasColumnName("to_date");
+                    }    
+                );
+            
+            modelBuilder.Entity<Project>()
+                .OwnsOne(
+                    p => p.DatePeriod,
+                    dp =>
+                    {
+                        dp.Property(p => p.From).HasColumnName("from_date");
+                        dp.Property(p => p.To).HasColumnName("to_date");
+                    }    
+                );
 
             modelBuilder.Entity<Contribution>()
                 .HasOne<Employee>(c => c.Employee)
@@ -59,7 +79,7 @@ namespace ProjectCompany
                 .WithMany(s => s.EmployeeSkills)
                 .HasForeignKey(es => es.SkillId);
         }
-        
+
         protected void OnContributionSkillModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ContributionSkill>()

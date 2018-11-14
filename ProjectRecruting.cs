@@ -9,27 +9,20 @@ namespace ProjectCompany
     public class ProjectRecruting
     {
         protected Project project;
-        protected List<Skill> skills;
+        protected CalculatingScoreStrategy scoreCalculator;
         protected List<Employee> allEmployees;
         protected int limitOfEmployees;
 
-        public ProjectRecruting(Project project, List<Skill> skills, List<Employee> employees, int limitOfEmployees)
+        public ProjectRecruting(Project project, CalculatingScoreStrategy scoreCalculator, List<Employee> employees, int limitOfEmployees)
         {
             this.project = project;
-            this.skills = skills;
+            this.scoreCalculator = scoreCalculator;
             this.allEmployees = employees;
             this.limitOfEmployees = limitOfEmployees;
         }
 
         public void Output()
         {
-            Console.Write(this.project.Title + " needs next skills: ");
-
-            foreach (Skill skill in this.skills) {
-                Console.Write(skill.Title + " ");
-            }
-
-            Console.WriteLine();
             Console.WriteLine("Found next employees: ");
 
             foreach (ProjectCandidate projectCandidate in this.GetProjectCandidates()) {
@@ -48,28 +41,17 @@ namespace ProjectCompany
 
         protected ProjectCandidate GetProjectCandidate(Employee emp)
         {
-            return new ProjectCandidate(emp, this.CalculateEmployeeSkillCoverage(emp));
+            var variable = this.scoreCalculator.calculateScore(emp);
+            return new ProjectCandidate(emp, this.scoreCalculator.calculateScore(emp));
         }
-
-        protected float CalculateEmployeeSkillCoverage(Employee employee)
-         {
-            int quanitityOfMatchedSkills = 0;
-            foreach (Skill skill in this.skills) {
-                if (employee.Skills.Contains(skill)) {
-                    quanitityOfMatchedSkills++;
-                }
-            }
-            
-            return (float)quanitityOfMatchedSkills / skills.Count;
-         }
 
         protected void OutputInfoAboutProjectCandidate(ProjectCandidate projectCandidate)
         {
             Employee employee = projectCandidate.Employee;
-            Console.Write(employee.name + ". His skill coverage is " + Math.Round(projectCandidate.Score, 2) + ". He has next skills: ");
+            Console.Write(employee.Name + ". His skill coverage is " + Math.Round(projectCandidate.Score, 2) + ". He has next skills: ");
             
-            foreach (Skill skill in employee.Skills) {
-                Console.Write(skill.Title + " ");
+            foreach (EmployeeSkill employeeSkill in employee.EmployeeSkills) {
+                Console.Write(employeeSkill.Skill.Title + " ");
             }
 
             Console.WriteLine();

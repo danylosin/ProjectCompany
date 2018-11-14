@@ -14,46 +14,43 @@ namespace ProjectCompany
         {
             using(AppContext appContext = new AppContext()) {
                 Report report = new Report();
-                /* 
+
                 Employee employeeDan = appContext
-                        .employees.Include(e => e.Contributions)
-                        .Include(e => e.EmployeeSkills)
-                        .ThenInclude(es => es.Skill)
-                        .First();
-                 */
-                 Employee employeeDan = appContext
                         .employees
                         .Include(e => e.Contributions)
                         .ThenInclude(c => c.Project)
                         .Include(e => e.Contributions)
                         .ThenInclude(c => c.ContributionSkills)
                         .ThenInclude(cs => cs.Skill)
-                        .First();       
+                        .First();
+                Project project = appContext
+                        .projects
+                        .Include(p => p.Contributions)
+                        .ThenInclude(c => c.ContributionSkills)
+                        .ThenInclude(cs => cs.Skill)
+                        .Include(p => p.Contributions)
+                        .ThenInclude(c => c.Employee)
+                        .First();               
                 report.OutputAboutEmployee(employeeDan);
-            }
-            
+                report.OutputAboutProject(project);
 
-            //DatePeriod datePeriod = new DatePeriod(new DateTime(2018, 6, 1), new DateTime(2018, 10, 11));
-            /* 
-            ProjectRecruting projectRecruting = new ProjectRecruting(
-                project, 
-                new List<Skill>(){
-                    skillAngular,
-                    skillCSharp,
-                    skillReact
-                }, 
-                new List<Employee>(){
-                    employeeBob, 
-                    employeeDavid,
-                    employeeMike
-                }, 
-                3
-            );
-            */
+                List<int> skillInts = new List<int>{ 1, 2, 3 };
 
-            //report.OutputAboutProject(project);
+                List<Skill> skills = appContext.skills.Where(s => skillInts.Contains(s.Id)).ToList();
+                CalculateScoreBySkillCoverage calculateScoreBySkillCoverage = new CalculateScoreBySkillCoverage(skills);
 
-            //projectRecruting.Output();
+                Console.WriteLine(project.Title + " needs employees");
+                calculateScoreBySkillCoverage.OutputNeededSkills();    
+                ProjectRecruting projectRecruting = new ProjectRecruting(
+                    project, 
+                    calculateScoreBySkillCoverage, 
+                    appContext.employees.Include(e => e.EmployeeSkills)
+                        .ThenInclude(es => es.Skill)
+                        .ToList(), 
+                    3
+                );
+                projectRecruting.Output();
+            };
         }
     }
 }
