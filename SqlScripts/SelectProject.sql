@@ -1,3 +1,4 @@
+/* DONE */
 SELECT "Info about project";
 
 SELECT projects.title as `Project title`,
@@ -28,6 +29,7 @@ JOIN contributions ON
 WHERE project_id = 1;          
 
 
+/* DONE */
 SET @value = '2017';
 SELECT CONCAT("Top 3 projects by count of contribution by ", @value) AS concated_string;
 

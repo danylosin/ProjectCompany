@@ -27,11 +27,13 @@ namespace ProjectCompany.Activity
 
         public Contribution(){}
 
-        public Contribution(string title, Project project, DatePeriod datePeriod)
+        public Contribution(string title, Project project, Employee employee, DatePeriod datePeriod)
         {
             this.Title = title;
             this.Project = project;
             this.DatePeriod = datePeriod;
+            this.Employee = employee;
+            this.ContributionSkills = new List<ContributionSkill>();
         }
     }
 }

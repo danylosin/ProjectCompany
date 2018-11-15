@@ -7,7 +7,7 @@ namespace ProjectCompany.Person
     public class Employee
     {
         public int Id { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public List<EmployeeSkill> EmployeeSkills {get; set;} 
 
         public List<Contribution> Contributions { get; private set; }

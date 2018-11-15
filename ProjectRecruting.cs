@@ -23,6 +23,7 @@ namespace ProjectCompany
 
         public void Output()
         {
+            Console.WriteLine(this.project.Title + " needs employees");
             Console.WriteLine("Found next employees: ");
 
             foreach (ProjectCandidate projectCandidate in this.GetProjectCandidates()) {
@@ -48,7 +49,7 @@ namespace ProjectCompany
         protected void OutputInfoAboutProjectCandidate(ProjectCandidate projectCandidate)
         {
             Employee employee = projectCandidate.Employee;
-            Console.Write(employee.Name + ". His skill coverage is " + Math.Round(projectCandidate.Score, 2) + ". He has next skills: ");
+            Console.Write(employee.Name + ". His score is " + Math.Round(projectCandidate.Score, 2) + ". He has next skills: ");
             
             foreach (EmployeeSkill employeeSkill in employee.EmployeeSkills) {
                 Console.Write(employeeSkill.Skill.Title + " ");

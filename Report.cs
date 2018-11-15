@@ -2,6 +2,7 @@ using ProjectCompany.Activity;
 using ProjectCompany.Person;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace ProjectCompany
 {
@@ -30,20 +31,53 @@ namespace ProjectCompany
             Console.WriteLine("Info about project " + project.Title);
 
             foreach (Contribution contribution in project.Contributions) {
+                Console.Write(contribution.DatePeriod.From + " to " + contribution.DatePeriod.To + " : ");
+
                 Console.Write(contribution.Title + ". It used next technologies: ");
                 this.OutputSkillsOfContribution(contribution);
+
                 Console.WriteLine(". The contributor is " + contribution.Employee.Name);
             }
 
             Console.WriteLine("_____________");
         }
         
+        public void OutputTopProjectsByCountOfContributions(List<Project> projects)
+        {
+            Console.WriteLine("Top projects by contributins");
+
+            foreach (Project project in projects)
+            {
+                Console.WriteLine(project.Title + ". Count of contributions " + project.Contributions.Count);
+            }
+
+            Console.WriteLine("_____________");
+        }
+        public void OutputProjectActityByDatePeriod(Project project, DatePeriod datePeriod)
+        {
+            Console.WriteLine("Period from " + datePeriod.From + " to " + datePeriod.To);
+            this.OutputAboutProject(project);
+        }
+        
+        public void OutputProjectContributionsByYear(List<Contribution> contributions, DateTime dateTime)
+        {
+            Console.WriteLine(dateTime.Year);
+            foreach (Contribution contribution in contributions) {
+                Console.Write(contribution.DatePeriod.From + " to " + contribution.DatePeriod.To + " : ");
+
+                Console.Write(contribution.Title + ". It used next technologies: ");
+                this.OutputSkillsOfContribution(contribution);
+
+                Console.WriteLine(". The contributor is " + contribution.Employee.Name);
+            }
+            Console.WriteLine("_____________");
+        }
+
         protected void OutputSkillsOfContribution(Contribution contribution)
         {
             foreach (ContributionSkill contributionSkill in contribution.ContributionSkills) {
                 Console.Write(contributionSkill.Skill.Title + " ");
             }
         }
-        
     }
 }
