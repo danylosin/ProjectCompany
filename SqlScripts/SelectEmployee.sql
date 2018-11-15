@@ -1,3 +1,4 @@
+/* DONE */
 SELECT "Info about employee";
 
 SELECT employees.name, 
