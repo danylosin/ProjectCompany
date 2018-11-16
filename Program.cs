@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProjectCompany.Services;
+using ProjectCompany.Seeds;
 
 namespace ProjectCompany
 {
@@ -19,8 +20,11 @@ namespace ProjectCompany
                 ProjectService projectService = new ProjectService(appContext);
                 SkillService skillService = new SkillService(appContext);
                 ContributionService contributionService = new ContributionService(appContext);
+
                 /* End of initing services */
 
+                ModelBuilderExtensions.Seed(appContext);
+                
                 Skill newSkill = new Skill("Amazing skill");
                 Employee newEmployee = new Employee("Best employee");
                 
@@ -88,10 +92,10 @@ namespace ProjectCompany
                 CalculateScoreBySkillCoverage calculateScoreBySkillCoverage = new CalculateScoreBySkillCoverage(skills);
                 CalculateScoreBySkillQuantity calculateScoreBySkillQuantity = new CalculateScoreBySkillQuantity();
                 
-                //calculateScoreBySkillCoverage.OutputNeededSkills();    
+                calculateScoreBySkillCoverage.OutputNeededSkills();    
                 ProjectRecruting projectRecruting = new ProjectRecruting(
                     project, 
-                    calculateScoreBySkillQuantity, 
+                    calculateScoreBySkillCoverage, 
                     appContext.employees.Include(e => e.EmployeeSkills)
                         .ThenInclude(es => es.Skill)
                         .ToList(), 

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Extensions;
 using ProjectCompany.Person;
 using ProjectCompany.Activity;
 using MySql.Data.EntityFrameworkCore.Extensions;
+using ProjectCompany.Seeds;
 
 namespace ProjectCompany
 {
@@ -21,6 +22,7 @@ namespace ProjectCompany
         {
             optionsBuilder.UseMySQL("server=localhost;UserId=root;Password=386991aA;database=ProjectCompany;");
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             this.OnContributionAndProjectModelCreating(modelBuilder);
@@ -29,7 +31,6 @@ namespace ProjectCompany
 
             this.OnContributionSkillModelCreating(modelBuilder);  
         }
-
 
         protected void OnContributionAndProjectModelCreating(ModelBuilder modelBuilder)
         {
