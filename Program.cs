@@ -59,12 +59,13 @@ namespace ProjectCompany
 
                 report.OutputTopProjectsByCountOfContributions(projectService.GetProjectsByCountOfContributions(3));
 
+
                  
-                List<Contribution> projectActivityByDatePeriod = projectService
-                                        .GetProjectActivyByDatePeriod(
+                List<Contribution> projectActivityByDatePeriod = projectService.GetProjectActivyByDatePeriod(
                                             project, 
                                             new DatePeriod(new DateTime(2017, 01, 01), new DateTime(2017, 05, 08))
                                         );  
+
 
                 Console.WriteLine("Info about activity of " + project.Title + " in period");                        
                 report.OutputProjectActityByDatePeriod(projectActivityByDatePeriod, new DatePeriod(new DateTime(2017, 01, 01), new DateTime(2017, 05, 08)));                        
