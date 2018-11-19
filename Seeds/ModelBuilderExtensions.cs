@@ -1,7 +1,6 @@
-using ProjectCompany.Person;
 using System.Collections.Generic;
-using ProjectCompany.Activity;
 using System;
+using ProjectCompany.Models;
 
 namespace ProjectCompany.Seeds
 {

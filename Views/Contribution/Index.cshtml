@@ -1,0 +1,21 @@
+ @{
+    ViewData["Title"] = "Info about project " + ViewBag.project.Id + " contributions";
+    Layout = "Layout";
+    var project = ViewBag.project;
+}
+ 
+ <div>
+    @project.Title
+    <p><a href="/project/@project.Id">Back</a></p>
+    <p>DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</p>
+</div>
+
+<ul>
+        @foreach (var contribution in ViewBag.project.Contributions)
+        {
+            <li>
+                @contribution.Title - @contribution.DatePeriod.From and @contribution.DatePeriod.To - 
+                Contributor: <a href="/employee/@contribution.Employee.Id">@contribution.Employee.Name</a> 
+            </li>
+        }
+</ul>

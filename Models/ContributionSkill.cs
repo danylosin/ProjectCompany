@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ProjectCompany.Person;
 
-namespace ProjectCompany.Activity
+namespace ProjectCompany.Models
 {
     [Table("contributions_skills")]
     public class ContributionSkill

@@ -1,17 +1,20 @@
 using System.Collections.Generic;
-using ProjectCompany.Activity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectCompany.Person
+namespace ProjectCompany.Models
 {
     public class Employee
     {
         public int Id { get; private set; }
+
+        [Required]
         public string Name { get; set; }
         public List<EmployeeSkill> EmployeeSkills {get; set;} 
 
         public List<Contribution> Contributions { get; private set; }
-
+        
+        public Employee() {}
         public Employee(string name)
         {
             this.Name = name;

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using ProjectCompany.Person;
 using ProjectCompany;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 
-namespace ProjectCompany.Activity
+namespace ProjectCompany.Models
 {
     public class Contribution
     {

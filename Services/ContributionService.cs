@@ -1,8 +1,8 @@
 using System.Linq;
-using ProjectCompany.Activity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Extensions;
 using System.Collections.Generic;
+using ProjectCompany.Models;
 
 namespace ProjectCompany.Services
 {

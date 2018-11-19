@@ -1,8 +1,7 @@
-using ProjectCompany.Activity;
-using ProjectCompany.Person;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using ProjectCompany.Models;
 
 namespace ProjectCompany
 {

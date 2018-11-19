@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectCompany.Person
+namespace ProjectCompany.Models
 {
     public class EmployeeSkill
     {

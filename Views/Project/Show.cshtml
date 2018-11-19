@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Info about project " + ViewBag.project.Id;
+    Layout = "Layout";
+    var project = ViewBag.project;
+}
+
+<div>
+    @project.Title
+    <p><a href="/project/@project.Id/contributions">Count of contributins: @project.Contributions.Count</a></p>
+    <p>DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</p>
+</div>

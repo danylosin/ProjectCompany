@@ -1,8 +1,8 @@
-using ProjectCompany.Person;
 using System.Collections.Generic;
 using System;
+using ProjectCompany.Models;
 
-namespace ProjectCompany
+namespace ProjectCompany.Services.Recruting
 {
     public class CalculateScoreBySkillCoverage : CalculatingScoreStrategy
     {

@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Info about employees";
+    Layout = "Layout";
+}
+
+<div>
+    @foreach (var employee in ViewBag.employees)
+    {
+        <p>@employee.Name</p>
+    }
+</div>

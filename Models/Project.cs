@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace ProjectCompany.Activity
+
+namespace ProjectCompany.Models
 {
     public class Project
     {

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using ProjectCompany.Activity;
 
-namespace ProjectCompany.Person
+namespace ProjectCompany.Models
 {
     public class Skill
     {

@@ -1,6 +1,7 @@
-using ProjectCompany.Person;
+using ProjectCompany.Models;
 using System.Collections.Generic;
-namespace ProjectCompany
+
+namespace ProjectCompany.Services.Recruting
 {
     public class CalculateScoreBySkillQuantity : CalculatingScoreStrategy
     {     

@@ -1,10 +1,9 @@
-using ProjectCompany.Activity;
-using ProjectCompany.Person;
+using ProjectCompany.Models;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace ProjectCompany
+namespace ProjectCompany.Services.Recruting
 {
     public class ProjectRecruting
     {

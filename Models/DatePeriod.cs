@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectCompany
+namespace ProjectCompany.Models
 {
     public class DatePeriod
     {

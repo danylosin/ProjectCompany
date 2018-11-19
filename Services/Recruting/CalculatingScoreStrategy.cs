@@ -1,6 +1,6 @@
-using ProjectCompany.Person;
+using ProjectCompany.Models;
 
-namespace ProjectCompany
+namespace ProjectCompany.Services.Recruting
 {
     public interface CalculatingScoreStrategy
     {

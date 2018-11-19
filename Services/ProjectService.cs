@@ -1,11 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Extensions;
 using ProjectCompany;
-using ProjectCompany.Person;
 using System.Linq;
 using System.Collections.Generic;
-using ProjectCompany.Activity;
 using System;
+using ProjectCompany.Models;
 
 namespace ProjectCompany.Services
 {

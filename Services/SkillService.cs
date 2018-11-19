@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using ProjectCompany.Person;
 using System.Linq;
+using ProjectCompany.Models;
+
 namespace ProjectCompany.Services
 {
     public class SkillService

@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Extensions;
-using ProjectCompany.Person;
-using ProjectCompany.Activity;
+//using ProjectCompany.Person;
+//using ProjectCompany.Activity;
 using MySql.Data.EntityFrameworkCore.Extensions;
 using ProjectCompany.Seeds;
+using ProjectCompany.Models;
 
 namespace ProjectCompany
 {
@@ -16,7 +17,7 @@ namespace ProjectCompany
 
         public DbSet<EmployeeSkill> employees_skills { get; set; }
 
-        public AppContext(){}
+        public AppContext(DbContextOptions<AppContext> options):base(options) {}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
