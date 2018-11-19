@@ -41,7 +41,6 @@ namespace ProjectCompany.Services.Recruting
 
         protected ProjectCandidate GetProjectCandidate(Employee emp)
         {
-            var variable = this.scoreCalculator.calculateScore(emp);
             return new ProjectCandidate(emp, this.scoreCalculator.calculateScore(emp));
         }
 

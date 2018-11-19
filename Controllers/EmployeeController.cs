@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCompany.Services;
 using ProjectCompany.Models;
+using ProjectCompany.ViewModels;
+
 
 namespace ProjectCompany.Controllers
 {
@@ -39,9 +41,9 @@ namespace ProjectCompany.Controllers
         [HttpGet("employee/create")]
         public IActionResult Create()
         {
-            ViewBag.Skills = this.skillService.GetAllSkills();
-            
-            return View();
+            EmployeeViewModel model = new EmployeeViewModel(this.skillService.GetAllSkills());
+
+            return View(model);
         }
 
         [HttpPost("employee/create")]

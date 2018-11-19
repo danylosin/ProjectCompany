@@ -1,23 +1,21 @@
+@model ProjectCompany.ViewModels.EmployeeViewModel
+
 @{
     ViewData["Title"] = "Creating new employee";
     Layout = "Layout";
-    var skills = @ViewBag.Skills;
 }
-
-@using System.Collections.Generic;
-@model ProjectCompany.Models.Employee
- 
-<form asp-action="Create" asp-controller="Employee"  asp-antiforgery="true">
-    <div>
-        <div>
-            <label asp-for="Name"></label>
-            <input type="text" asp-for="Name" />
+<div class="col-xl-12">
+    <form asp-action="Create" asp-controller="Employee" method="Post">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input class="form-control" type="text" asp-for="Name" placeholder="Enter a name">
+        </div>
+        <div class="form-group">
+            <select class="form-control" multiple asp-for="Skill" asp-items="Model.Skills">
+            </select>
         </div>
         <div>
-            <input type="submit" value="Save" />
+            <input class="btn btn-primary" type="submit" value="Save" />
         </div>
-        <div>
-            <select asp-items="@skills"></select>
-        </div>
-    </div>
-</form>
+    </form>
+</div>

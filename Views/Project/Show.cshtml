@@ -4,8 +4,10 @@
     var project = ViewBag.project;
 }
 
-<div>
-    @project.Title
-    <p><a href="/project/@project.Id/contributions">Count of contributins: @project.Contributions.Count</a></p>
-    <p>DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">@project.Title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</h6>
+    <a href="/project/@project.Id/contributions" class="card-link">Contributions</a>
+  </div>
 </div>
