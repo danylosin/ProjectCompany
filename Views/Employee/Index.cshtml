@@ -3,9 +3,28 @@
     Layout = "Layout";
 }
 
-<div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Project name</th>
+      <th>Skills</th>
+    </tr>
+  </thead>
+  <tbody>
     @foreach (var employee in ViewBag.employees)
     {
-        <p>@employee.Name</p>
+        <tr>
+        <th scope="row">@employee.Id</th>
+        <td><a href="/employee/@employee.Id">@employee.Name</a></td>
+        <td>
+            @foreach (var EmployeeSkill in employee.EmployeeSkills)
+            {
+                <span>@EmployeeSkill.Skill.Title </span>
+            }
+        </td>
+        </tr>
     }
-</div>
+  </tbody>
+</table>

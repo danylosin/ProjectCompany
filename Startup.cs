@@ -36,7 +36,11 @@ namespace ProjectCompany
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<AppContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("ProjectCompanyDBConnection")));
-            //services.AddTransient<ProjectService>();
+            
+            services.AddTransient<ProjectService>();
+            services.AddTransient<EmployeeService>();
+            services.AddTransient<ContributionService>();
+            services.AddTransient<SkillService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

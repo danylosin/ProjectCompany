@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿'use strict';
 
-// Write your JavaScript code.
+function deleteProject(id) {
+    console.log(id);
+    fetch(`/project/${id}`, {method: "DELETE"})
+        .then((response) => {
+            createNotify();
+        })
+        .catch((e) => {
+            alert("Cannot delete this item " + e);
+        })
+}
+
+function createNotify() {
+    let p = document.createElement('p');
+    p.className = "alert alert-success";
+    p.innerHTML = "Good job";
+    let card = document.getElementById("card");
+    card.appendChild(p);
+}

@@ -13,9 +13,9 @@ namespace ProjectCompany.Controllers
     {
         private ProjectService projectService;
 
-        public ProjectController(AppContext appContext)
+        public ProjectController(ProjectService projectService)
         {
-            this.projectService = new ProjectService(appContext);
+            this.projectService = projectService;
         }
 
         [HttpGet("/")]
@@ -29,8 +29,12 @@ namespace ProjectCompany.Controllers
         [HttpGet("project/{id:int:min(1)}")]
         public IActionResult Show(int id)
         {
-            ViewBag.project = this.projectService.GetProjectById(id);
-            
+            Project project = this.projectService.GetProjectById(id);
+          
+            if (project == null) {
+                return new NotFoundResult();
+            }
+            ViewBag.project = project;
             return View();
         }
 
@@ -45,17 +49,20 @@ namespace ProjectCompany.Controllers
         {
             if (ModelState.IsValid) {
                 this.projectService.AddProject(project);
-                return Redirect("project/" + project.Id);
+                return Redirect("/project/" + project.Id);
             } else {
                 return View(project);
             }
         }
-
+        
+        [HttpDelete("project/{id:int:min(1)}")]
         public IActionResult Delete(int id)
         {
             this.projectService.DeleteProjectById(id);
-
-            return View();
+            if (this.projectService.GetProjectById(id) == null) {
+                return new EmptyResult();
+            }
+            return new NotFoundResult();
         }
 
         [HttpGet("project/recrute")]

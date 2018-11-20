@@ -23,9 +23,8 @@ namespace ProjectCompany.Services
                     .ThenInclude(c => c.ContributionSkills)
                     .ThenInclude(cs => cs.Skill)
                     .Include(p => p.Contributions)
-                    .ThenInclude(c => c.Employee)   
-                    .Where(p => p.Id == id)
-                    .First();
+                    .ThenInclude(c => c.Employee)
+                    .SingleOrDefault(p => p.Id == id);   
         }
 
         public List<Project> GetAllProjects()

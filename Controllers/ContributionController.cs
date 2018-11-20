@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectCompany.Services;
+using ProjectCompany.Models;
 
 namespace ProjectCompany.Controllers
 {
@@ -12,7 +13,7 @@ namespace ProjectCompany.Controllers
             this.projectService = new ProjectService(appContext);
         }
 
-        [HttpGet("project/{id:int:min(1)}/contributions")]
+        [HttpGet("project/{id:int:min(1)}/contribution")]
         public IActionResult Index(int id)
         {
             ViewBag.project = this.projectService.GetProjectById(id);
@@ -20,9 +21,21 @@ namespace ProjectCompany.Controllers
             return View();
         }
         
+        [HttpGet("project/{id:int:min(1)}/contribution/create")]
         public IActionResult Create(int id)
         {
+            ViewBag.project = this.projectService.GetProjectById(id);
 
+            return View();
+        }
+
+        [HttpPost("project/{id:int:min(1)}/contribution/create")]
+        public IActionResult Create(int id, [Bind] Contribution contribution)
+        {
+            ViewBag.project = this.projectService.GetProjectById(id);
+
+            var m = contribution;
+            
             return View();
         }
     }

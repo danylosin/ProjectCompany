@@ -6,9 +6,12 @@ namespace ProjectCompany.Models
 {
     public class DatePeriod
     {
-        [DataType(DataType.Date)]
+        [Required]
+        [DataType(DataType.Date, ErrorMessage="Invalid date")]
         public DateTime From { get; set; }
-        [DataType(DataType.Date)]
+
+        [Required]
+        [DataType(DataType.Date, ErrorMessage="Invalid date")]
         public DateTime To { get; set; }
 
         public DatePeriod(){}

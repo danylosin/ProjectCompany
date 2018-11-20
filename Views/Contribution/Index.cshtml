@@ -13,7 +13,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Project name</th>
+      <th scope="col">Contribution name</th>
       <th>Date from</th>
       <th>Date to</th>
       <th>Contributor</th>
@@ -25,10 +25,10 @@
     {
         <tr>
         <th scope="row">@contribution.Id</th>
-        <td><a href="/project/@project.Id">@contribution.Title</a></td>
+        <td>@contribution.Title</td>
         <td>@contribution.DatePeriod.From</td>
         <td>@contribution.DatePeriod.To</td>
-        <td>@contribution.Employee.Name</td>
+        <td><a href="/employee/@contribution.Employee.Id">@contribution.Employee.Name</a></td>
         <td>
             @foreach (var ContributionSkill in contribution.ContributionSkills)
             {
