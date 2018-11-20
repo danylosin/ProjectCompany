@@ -85,5 +85,11 @@ namespace ProjectCompany.Services
             this.appContext.projects.Update(project);
             this.appContext.SaveChanges();
         }
+
+        public void DeleteProjectById(int id)
+        {
+            this.appContext.projects.Remove(this.GetProjectById(id));
+            this.appContext.SaveChanges();
+        }
     }
 }

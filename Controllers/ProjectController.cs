@@ -34,6 +34,30 @@ namespace ProjectCompany.Controllers
             return View();
         }
 
+        [HttpGet("project/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost("project/create")]
+        public IActionResult Create(Project project)
+        {
+            if (ModelState.IsValid) {
+                this.projectService.AddProject(project);
+                return Redirect("project/" + project.Id);
+            } else {
+                return View(project);
+            }
+        }
+
+        public IActionResult Delete(int id)
+        {
+            this.projectService.DeleteProjectById(id);
+
+            return View();
+        }
+
         [HttpGet("project/recrute")]
         public IActionResult Recrute()
         {

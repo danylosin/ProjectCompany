@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectCompany.Models
 {
     public class Project
     {
         public int Id {get; private set;}
-        public string Title { get; private set; }
+        [Required]
+        public string Title { get; set; }
         public List<Contribution> Contributions { get; set; }
 
-        public DatePeriod DatePeriod { get; private set; }
+        [Required]
+        public DatePeriod DatePeriod { get; set; }
 
         public Project(){}
         public Project(string title, DatePeriod datePeriod)

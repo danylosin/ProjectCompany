@@ -47,11 +47,19 @@ namespace ProjectCompany.Controllers
         }
 
         [HttpPost("employee/create")]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create([Bind] EmployeeViewModel model)
         {
-            this.employeeService.AddEmployee(employee);
+            if (ModelState.IsValid) {
+                Employee employee = new Employee(model.Name);
+                foreach (var skill in model.SelectedSkills) {
+                    int j;
+                    Int32.TryParse(skill, out j);
+                    employee.EmployeeSkills.Add(new EmployeeSkill() {SkillId = j, Employee = employee});
+                }
+                this.employeeService.AddEmployee(employee);
+            };
 
-            return Redirect("/employee/" + employee.Id);
+            return View(model);
         }
     }
 }

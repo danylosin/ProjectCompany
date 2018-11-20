@@ -4,18 +4,38 @@
     var project = ViewBag.project;
 }
  
- <div>
+<div>
     @project.Title
     <p><a href="/project/@project.Id">Back</a></p>
     <p>DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</p>
 </div>
-
-<ul>
-        @foreach (var contribution in ViewBag.project.Contributions)
-        {
-            <li>
-                @contribution.Title - @contribution.DatePeriod.From and @contribution.DatePeriod.To - 
-                Contributor: <a href="/employee/@contribution.Employee.Id">@contribution.Employee.Name</a> 
-            </li>
-        }
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Project name</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Contributor</th>
+      <th>Skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var contribution in ViewBag.project.Contributions)
+    {
+        <tr>
+        <th scope="row">@contribution.Id</th>
+        <td><a href="/project/@project.Id">@contribution.Title</a></td>
+        <td>@contribution.DatePeriod.From</td>
+        <td>@contribution.DatePeriod.To</td>
+        <td>@contribution.Employee.Name</td>
+        <td>
+            @foreach (var ContributionSkill in contribution.ContributionSkills)
+            {
+                @ContributionSkill.Skill.Title
+            }
+        </td>
+        </tr>
+    }
+  </tbody>
+</table>
