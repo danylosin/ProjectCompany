@@ -1,4 +1,4 @@
-<table class="table">
+<table>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -10,9 +10,9 @@
   <tbody>
     <tr *ngFor="let project of projects">
       <td>{{ project.id }}</td>
-      <td>{{ project.title }}</td>
-      <td>{{ project.datePeriod.from }}</td>
-      <td> {{ project.datePeriod.to }}</td>
+      <td><a [routerLink]="[ '/project', project.id ]">{{ project.title }}</a></td>
+      <td>{{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
+      <td>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
     </tr>
   </tbody>
 </table>

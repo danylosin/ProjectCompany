@@ -6,12 +6,14 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
 import { routes } from './app.routes';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectListComponent,
-    NavBarComponent
+    NavBarComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

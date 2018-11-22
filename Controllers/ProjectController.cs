@@ -25,7 +25,7 @@ namespace ProjectCompany.Controllers
             return this.projectService.GetAllProjects();
         }
 
-        [HttpGet("project/{id:int:min(1)}")]
+        [HttpGet("{id:int:min(1)}")]
         public IActionResult Show(int id)
         {
             Project project = this.projectService.GetProjectById(id);
@@ -33,8 +33,8 @@ namespace ProjectCompany.Controllers
             if (project == null) {
                 return new NotFoundResult();
             }
-            ViewBag.project = project;
-            return View();
+            
+            return Ok(project);
         }
 
         //[HttpGet("project/create")]

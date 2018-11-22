@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+      <h5 class="card-title">{{ project.title }}</h5>
+      <p class="card-text"> <strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}} and
+        <strong> to </strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</p>
+        <a class="btn btn-primary" href="#" class="btn btn-primary">
+          contributions
+          <span class="badge badge-light">{{ project.contributions.length }}</span>
+        </a>
+  </div>
+</div>
