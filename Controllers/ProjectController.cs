@@ -25,7 +25,7 @@ namespace ProjectCompany.Controllers
             return this.projectService.GetAllProjects();
         }
 
-        //[HttpGet("project/{id:int:min(1)}")]
+        [HttpGet("project/{id:int:min(1)}")]
         public IActionResult Show(int id)
         {
             Project project = this.projectService.GetProjectById(id);

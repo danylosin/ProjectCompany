@@ -1,0 +1,15 @@
+@import '../../../styles';
+
+nav {
+    @extend .navbar;
+    @extend .navbar-dark;
+    @extend .bg-primary;
+    @extend .navbar-expand-lg;
+}
+
+li {
+    @extend .nav-item;
+    a {
+        @extend .nav-link;
+    }
+}
