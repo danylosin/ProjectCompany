@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCompany.Services;
 using ProjectCompany.Models;
+using System.Web.Http;
 
 namespace ProjectCompany.Controllers
 {
+    [RoutePrefix("api/project")]
     public class ProjectController : Controller
     {
         private ProjectService projectService;
@@ -18,7 +20,7 @@ namespace ProjectCompany.Controllers
             this.projectService = projectService;
         }
 
-        [HttpGet("/")]
+        //[HttpGet("/asd")]
         public IActionResult Index()
         {
             ViewBag.projects = this.projectService.GetAllProjects();
@@ -26,7 +28,7 @@ namespace ProjectCompany.Controllers
             return View();
         }
 
-        [HttpGet("project/{id:int:min(1)}")]
+        //[HttpGet("project/{id:int:min(1)}")]
         public IActionResult Show(int id)
         {
             Project project = this.projectService.GetProjectById(id);
@@ -38,13 +40,13 @@ namespace ProjectCompany.Controllers
             return View();
         }
 
-        [HttpGet("project/create")]
+        //[HttpGet("project/create")]
         public IActionResult Create()
         {
             return View();
         }
         
-        [HttpPost("project/create")]
+        //[HttpPost("project/create")]
         public IActionResult Create(Project project)
         {
             if (ModelState.IsValid) {
@@ -55,7 +57,7 @@ namespace ProjectCompany.Controllers
             }
         }
         
-        [HttpDelete("project/{id:int:min(1)}")]
+        //[HttpDelete("project/{id:int:min(1)}")]
         public IActionResult Delete(int id)
         {
             this.projectService.DeleteProjectById(id);
@@ -65,7 +67,7 @@ namespace ProjectCompany.Controllers
             return new NotFoundResult();
         }
 
-        [HttpGet("project/recrute")]
+        //[HttpGet("project/recrute")]
         public IActionResult Recrute()
         {
             //ViewBag.project = this.projectService.GetProjectById(id);
@@ -73,7 +75,7 @@ namespace ProjectCompany.Controllers
             return View();
         }
 
-        [HttpPost("project/recrute")]
+        //[HttpPost("project/recrute")]
         public IActionResult Recrute(int id, List<Skill> skills)
         {
             // TODO
