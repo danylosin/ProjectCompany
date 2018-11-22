@@ -1,0 +1,17 @@
+@import '../../../styles';
+
+article {
+    @extend .card;
+}
+
+section {
+    @extend .card-body;
+}
+
+h5 {
+    @extend .card-title;
+}
+
+p {
+    @extend .card-text;
+}
