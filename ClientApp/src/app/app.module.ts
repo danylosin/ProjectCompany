@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { routes } from './app.routes';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

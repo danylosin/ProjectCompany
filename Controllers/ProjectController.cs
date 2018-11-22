@@ -9,7 +9,7 @@ using ProjectCompany.Models;
 
 namespace ProjectCompany.Controllers
 {
-    [Route("api/project")]
+    [Route("api/[controller]")]
     public class ProjectController : Controller
     {
         private ProjectService projectService;
@@ -20,7 +20,7 @@ namespace ProjectCompany.Controllers
         }
 
         [HttpGet]
-        public List<Project> Index()
+        public ActionResult<List<Project>> Index()
         {
             return this.projectService.GetAllProjects();
         }

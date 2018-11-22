@@ -8,5 +8,11 @@
     </tr>
   </thead>
   <tbody>
+    <tr *ngFor="let project of projects">
+      <td>{{ project.id }}</td>
+      <td>{{ project.title }}</td>
+      <td>{{ project.datePeriod.from }}</td>
+      <td> {{ project.datePeriod.to }}</td>
+    </tr>
   </tbody>
 </table>
