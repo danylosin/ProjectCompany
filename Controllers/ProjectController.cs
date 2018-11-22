@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCompany.Services;
 using ProjectCompany.Models;
-using System.Web.Http;
 
 namespace ProjectCompany.Controllers
 {
-    [RoutePrefix("api/project")]
+    [Route("api/project")]
     public class ProjectController : Controller
     {
         private ProjectService projectService;
@@ -20,12 +19,10 @@ namespace ProjectCompany.Controllers
             this.projectService = projectService;
         }
 
-        //[HttpGet("/asd")]
-        public IActionResult Index()
+        [HttpGet]
+        public List<Project> Index()
         {
-            ViewBag.projects = this.projectService.GetAllProjects();
-
-            return View();
+            return this.projectService.GetAllProjects();
         }
 
         //[HttpGet("project/{id:int:min(1)}")]
