@@ -4,38 +4,36 @@
     var project = ViewBag.project;
 }
  
-<div>
-    @project.Title
-    <p><a href="/project/@project.Id">Back</a></p>
-    <p>DatePeriod: @project.DatePeriod.From and @project.DatePeriod.To</p>
-</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Contribution name</th>
-      <th>Date from</th>
-      <th>Date to</th>
-      <th>Contributor</th>
-      <th>Skills</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var contribution in ViewBag.project.Contributions)
-    {
+<h4>Contributions of @project.Title</h4>
+<div class="col-xl-12">
+    <table class="table">
+    <thead>
         <tr>
-        <th scope="row">@contribution.Id</th>
-        <td>@contribution.Title</td>
-        <td>@contribution.DatePeriod.From</td>
-        <td>@contribution.DatePeriod.To</td>
-        <td><a href="/employee/@contribution.Employee.Id">@contribution.Employee.Name</a></td>
-        <td>
-            @foreach (var ContributionSkill in contribution.ContributionSkills)
-            {
-                @ContributionSkill.Skill.Title
-            }
-        </td>
+        <th scope="col">#</th>
+        <th scope="col">Contribution name</th>
+        <th>Date from</th>
+        <th>Date to</th>
+        <th>Contributor</th>
+        <th>Skills</th>
         </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+        @foreach (var contribution in ViewBag.project.Contributions)
+        {
+            <tr>
+            <th scope="row">@contribution.Id</th>
+            <td>@contribution.Title</td>
+            <td>@contribution.DatePeriod.From</td>
+            <td>@contribution.DatePeriod.To</td>
+            <td><a href="/employee/@contribution.Employee.Id">@contribution.Employee.Name</a></td>
+            <td>
+                @foreach (var ContributionSkill in contribution.ContributionSkills)
+                {
+                    @ContributionSkill.Skill.Title
+                }
+            </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>

@@ -7,10 +7,12 @@ namespace ProjectCompany.Controllers
     public class ContributionController : Controller
     {
         private ProjectService projectService;
+        private ContributionService contributionService;
 
-        public ContributionController(AppContext appContext)
+        public ContributionController(ContributionService contributionService, ProjectService projectService)
         {
-            this.projectService = new ProjectService(appContext);
+            this.projectService = projectService;
+            this.contributionService = contributionService;
         }
 
         [HttpGet("project/{id:int:min(1)}/contribution")]
@@ -32,11 +34,12 @@ namespace ProjectCompany.Controllers
         [HttpPost("project/{id:int:min(1)}/contribution/create")]
         public IActionResult Create(int id, [Bind] Contribution contribution)
         {
-            ViewBag.project = this.projectService.GetProjectById(id);
-
-            var m = contribution;
+            if (ModelState.IsValid) {
+                contribution.ProjectId = id;
+                this.contributionService.AddContributon(contribution); 
+            }
             
-            return View();
+            return View(contribution);
         }
     }
 }

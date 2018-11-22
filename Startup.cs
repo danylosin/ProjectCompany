@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectCompany.Services;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace ProjectCompany
 {
@@ -35,6 +36,11 @@ namespace ProjectCompany
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
+
             services.AddDbContext<AppContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("ProjectCompanyDBConnection")));
             
             services.AddTransient<ProjectService>();

@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Info about employee " + ViewBag.employee.Id;
     Layout = "Layout";
+    var employee = @ViewBag.employee.Name;
 }
 
 <div>
@@ -18,4 +19,16 @@
             <li>@employeeSkill.Skill.Title</li>
         }
     </ul>
+</div>
+
+<div class="col-xl-12">
+  <div class="card" id="card">
+    <div class="card-body">
+      <h5 class="card-title">@employee.Name</h5>
+      <h6 class="card-subtitle mb-2 text-muted">DatePeriod: @employee?.DatePeriod.From and @employee?.DatePeriod.To</h6>
+      <a href="/project/@employee?.Id/contribution/create" class="card-link">Add contribution</a>
+      <a href="/project/@employee?.Id/contribution" class="card-link">Contributions</a>
+      <a href="#" class="card-link" onclick="deleteProject(@employee?.Id)">DELETE project</button>
+    </div>
+  </div>
 </div>

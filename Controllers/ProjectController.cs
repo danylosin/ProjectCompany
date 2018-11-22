@@ -60,7 +60,7 @@ namespace ProjectCompany.Controllers
         {
             this.projectService.DeleteProjectById(id);
             if (this.projectService.GetProjectById(id) == null) {
-                return new EmptyResult();
+                return Ok();
             }
             return new NotFoundResult();
         }

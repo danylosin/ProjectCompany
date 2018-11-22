@@ -1,20 +1,36 @@
 ﻿'use strict';
 
-function deleteProject(id) {
-    console.log(id);
-    fetch(`/project/${id}`, {method: "DELETE"})
-        .then((response) => {
-            createNotify();
-        })
-        .catch((e) => {
-            alert("Cannot delete this item " + e);
-        })
+function createEmployee(e) {
+    e.preventDefault();
+    fetch('/employee/createfromjson', {
+        method: "POST", 
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"Name": `${e.target[0].value}`})
+    })
+    .then(r => {
+        if (r.status == 422) {
+            alert("Invalid entity");
+            reject();
+        } else if (r.status == 200) {
+            return r.json()
+        }
+    })
+    .then((response) => {
+        appendNewEmployee(response);
+    })
 }
 
-function createNotify() {
-    let p = document.createElement('p');
-    p.className = "alert alert-success";
-    p.innerHTML = "Good job";
-    let card = document.getElementById("card");
-    card.appendChild(p);
+function appendNewEmployee(r) {
+    let table = document.getElementById("employee-table");
+    let row = table.insertRow(0);
+
+    let id = row.insertCell(0);
+    let name = row.insertCell(1);
+
+    id.innerHTML = r.id;
+    name.innerHTML = r.name;
+    table.appendChild(row);
 }

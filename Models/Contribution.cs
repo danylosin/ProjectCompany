@@ -2,25 +2,28 @@ using System.Collections.Generic;
 using ProjectCompany;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectCompany.Models
 {
     public class Contribution
     {
         public int Id {get; private set; }
-        public string Title { get; private set; }
+        
+        [Required]
+        public string Title { get; set; }
 
         [Column("project_id")]
-        public int ProjectId {get; private set; }
+        public int ProjectId {get; set; }
 
-        public Project Project { get; private set; }
+        public Project Project { get; set; }
 
         [Column("employee_id")]
-        public int EmployeeId { get; private set; }
+        public int EmployeeId { get; set; }
 
-        public Employee Employee { get; private set; }
+        public Employee Employee { get; set; }
 
-        public DatePeriod DatePeriod { get; private set; }
+        public DatePeriod DatePeriod { get; set; }
 
         public List<ContributionSkill> ContributionSkills { get; set; }
 

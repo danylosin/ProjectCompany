@@ -61,5 +61,15 @@ namespace ProjectCompany.Controllers
 
             return View(model);
         }
+
+        [HttpPost("employee/createfromjson")]
+        public IActionResult CreateFromJson([FromBody] Employee employee)
+        {
+            if (ModelState.IsValid) {
+                this.employeeService.AddEmployee(employee);
+                return Ok(employee);
+            }
+            return UnprocessableEntity(ModelState);
+        }
     }
 }
