@@ -19,8 +19,7 @@ export class ProjectService {
     return this.http.get<Project>(this.url + `/${id}`);
   }
 
-  public newProject(project: Project): Observable<Project> {
-    console.log(project);
+  public createProject(project: Project): Observable<Project> {
     return this.http.post<Project>(this.url, project);
   }
 }

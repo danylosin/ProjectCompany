@@ -1,20 +1,20 @@
-<div class="col-xl-12">
+<article>
   <h4>Adding new contribution for project </h4>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
+    <div>
       <label for="title">Title:</label>
-      <input type="text" class="form-control" formControlName="title" id="title">
+      <input type="text" formControlName="title" id="title">
     </div>
     <div formGroupName="datePeriod">
-        <div class="form-group">
+        <div>
           <label for="from">Date from </label>
-          <input type="date" class="form-control" formControlName="from" id="from">
+          <input type="date" formControlName="from" id="from">
         </div>
-        <div class="form-group">
+        <div>
           <label for="to">Date to</label>
-          <input type="date" class="form-control" formControlName="to" id="to">
+          <input type="date" formControlName="to" id="to">
         </div>
       </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
-</div>
+</article>

@@ -1,1 +1,19 @@
 @import '../../../styles';
+
+article {
+    @extend .col-xl-12;
+    margin-top: 20px;
+}
+
+input {
+    @extend .form-control;
+}
+
+div {
+    @extend .form-group;
+}
+
+button {
+    @extend .btn;
+    @extend .btn-primary;
+}

@@ -22,7 +22,7 @@ export class NewProjectComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.service.newProject(form.value).subscribe(data => console.log(data));
+    this.service.createProject(form.value).subscribe(data => console.log(data));
   }
 
 }

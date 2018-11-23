@@ -12,6 +12,7 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
 import { ContributionListComponent } from './contribution/contribution-list/contribution-list.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { NewContributionComponent } from './contribution/new-contribution/new-contribution.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewContributionComponent } from './contribution/new-contribution/new-co
     ProjectDetailComponent,
     ContributionListComponent,
     NewProjectComponent,
-    NewContributionComponent
+    NewContributionComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
