@@ -9,6 +9,7 @@ import { Project } from 'src/app/project/project.model';
   styleUrls: ['./contribution-list.component.scss']
 })
 export class ContributionListComponent implements OnInit {
+  public isLoaded = false;
   project: Project;
   constructor(
     private service: ProjectService,
@@ -17,7 +18,10 @@ export class ContributionListComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getProjectById(id).subscribe(data => this.project = data);
+    this.service.getProjectById(id).subscribe(data => { 
+      this.project = data; 
+      this.isLoaded = true;
+    });
   }
 
 }

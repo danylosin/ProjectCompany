@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,6 +11,7 @@ import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ContributionListComponent } from './contribution/contribution-list/contribution-list.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
+import { NewContributionComponent } from './contribution/new-contribution/new-contribution.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { NewProjectComponent } from './project/new-project/new-project.component
     NavBarComponent,
     ProjectDetailComponent,
     ContributionListComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    NewContributionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
