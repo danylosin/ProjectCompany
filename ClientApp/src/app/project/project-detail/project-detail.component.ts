@@ -12,8 +12,7 @@ import { Contribution } from 'src/app/contribution/contribution.model';
 export class ProjectDetailComponent implements OnInit {
   public isLoaded = false;
   public project: Project;
-  public newContribution: Contribution;
-
+  public contributions: Contribution[];
   constructor(
     private service: ProjectService,
     private route: ActivatedRoute
@@ -23,12 +22,8 @@ export class ProjectDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.getProjectById(id).subscribe(data => {
       this.project = data,
+      this.contributions = data.contributions;
       this.isLoaded = true
     });
   }
-
-  public receiveContribution($event) {
-    this.newContribution = $event;
-  }
-
 }
