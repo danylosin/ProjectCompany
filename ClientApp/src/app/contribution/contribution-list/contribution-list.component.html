@@ -1,5 +1,4 @@
 <article *ngIf="isLoaded">
-  <a class="btn btn-primary" [routerLink]="['/project', project.id, 'contribution', 'add']">New Contribution</a>
   <table>
     <thead>
       <tr>
@@ -11,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let contribution of project.contributions">
+      <tr *ngFor="let contribution of contributions">
         <td>{{ contribution.id }}</td>
         <td>{{ contribution.title }}</td>
         <td>{{ contribution.datePeriod.from | date : 'yyyy-MM-dd'}}</td>

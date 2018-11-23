@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { Project } from '../project.model';
 import { ActivatedRoute } from '@angular/router';
+import { Contribution } from 'src/app/contribution/contribution.model';
 
 @Component({
   selector: 'app-project-detail',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProjectDetailComponent implements OnInit {
   public isLoaded = false;
   public project: Project;
+  public newContribution: Contribution;
 
   constructor(
     private service: ProjectService,
@@ -23,6 +25,10 @@ export class ProjectDetailComponent implements OnInit {
       this.project = data,
       this.isLoaded = true
     });
+  }
+
+  public receiveContribution($event) {
+    this.newContribution = $event;
   }
 
 }

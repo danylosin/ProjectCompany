@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Contributon } from './contribution.model';
+import { Contribution } from './contribution.model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ContributionService {
   constructor(private http: HttpClient) { }
 
-  public newContribution(contribution: Contributon, projectId: number) {
-    return this.http.post(`api/project/${projectId}/contribution`, contribution);
+  public newContribution(contribution: Contribution, projectId: number): Observable<Contribution> {
+    return this.http.post<Contribution>(`api/project/${projectId}/contribution`, contribution);
   }
 }
