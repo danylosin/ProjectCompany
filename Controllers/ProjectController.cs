@@ -36,21 +36,15 @@ namespace ProjectCompany.Controllers
             
             return Ok(project);
         }
-
-        //[HttpGet("project/create")]
-        public IActionResult Create()
-        {
-            return View();
-        }
         
-        //[HttpPost("project/create")]
-        public IActionResult Create(Project project)
+        [HttpPost]
+        public IActionResult Create([FromBody] Project project)
         {
             if (ModelState.IsValid) {
                 this.projectService.AddProject(project);
-                return Redirect("/project/" + project.Id);
+                return Ok(project);
             } else {
-                return View(project);
+                return UnprocessableEntity(ModelState);
             }
         }
         

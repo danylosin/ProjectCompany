@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { routes } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
-import { routes } from './app.routes';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { ContributionListComponent } from './contribution/contribution-list/contribution-list.component';
+import { NewProjectComponent } from './project/new-project/new-project.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,14 @@ import { ContributionListComponent } from './contribution/contribution-list/cont
     ProjectListComponent,
     NavBarComponent,
     ProjectDetailComponent,
-    ContributionListComponent
+    ContributionListComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
