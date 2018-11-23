@@ -24,9 +24,9 @@ export class NewContributionComponent implements OnInit {
 
   onSubmit() {
     this.onSubmitFormEvent.emit(this.form);
-    const projectId = +this.route.snapshot.paramMap.get('id');
-    this.service.newContribution(this.form.value, projectId)
-          .subscribe(data => this.newContributionEvent.emit(data as Contribution));
+    //const projectId = +this.route.snapshot.paramMap.get('id');
+    //this.service.newContribution(this.form.value, projectId)
+      //    .subscribe(data => this.newContributionEvent.emit(data as Contribution));
   }
 
   private buildForm() {

@@ -1,5 +1,5 @@
 <article *ngIf="isLoaded">
-  <app-new-contribution (newContributionEvent)="receiveContribution($event)" (onSubmitFormEvent)="receiveForm($event)"></app-new-contribution>
+  <app-new-contribution (onSubmitFormEvent)="createContribution($event)"></app-new-contribution>
   <section>
       <h5>{{ project.title }}</h5>
       <p> 
