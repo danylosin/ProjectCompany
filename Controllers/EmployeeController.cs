@@ -11,6 +11,7 @@ using ProjectCompany.ViewModels;
 
 namespace ProjectCompany.Controllers
 {
+    [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
         private EmployeeService employeeService;
@@ -22,12 +23,10 @@ namespace ProjectCompany.Controllers
             this.skillService = new SkillService(appContext);
         }
 
-        [HttpGet("/employee")]
+        [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.employees = this.employeeService.GetAllEmployees();
-
-            return View();
+            return Ok(this.employeeService.GetAllEmployees());
         }
 
         [HttpGet("employee/{id:int:min(1)}")]

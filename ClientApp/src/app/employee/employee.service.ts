@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private url: 'api/employee'
+  private url = 'api/employee';
+
   constructor(private http: HttpClient) { }
 
   getEmployees() {
