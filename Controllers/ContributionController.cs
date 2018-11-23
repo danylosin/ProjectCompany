@@ -4,6 +4,7 @@ using ProjectCompany.Models;
 
 namespace ProjectCompany.Controllers
 {
+    [Route("api/project/{id:int:min(1)}/[controller]")]
     public class ContributionController : Controller
     {
         private ProjectService projectService;
@@ -15,7 +16,7 @@ namespace ProjectCompany.Controllers
             this.contributionService = contributionService;
         }
 
-        [HttpGet("project/{id:int:min(1)}/contribution")]
+        //[HttpGet("project/{id:int:min(1)}/contribution")]
         public IActionResult Index(int id)
         {
             ViewBag.project = this.projectService.GetProjectById(id);
@@ -23,23 +24,17 @@ namespace ProjectCompany.Controllers
             return View();
         }
         
-        [HttpGet("project/{id:int:min(1)}/contribution/create")]
-        public IActionResult Create(int id)
+        [HttpPost]
+        public IActionResult Create(int id, [FromBody] Contribution contribution)
         {
-            ViewBag.project = this.projectService.GetProjectById(id);
-
-            return View();
-        }
-
-        [HttpPost("project/{id:int:min(1)}/contribution/create")]
-        public IActionResult Create(int id, [Bind] Contribution contribution)
-        {
+            contribution.EmployeeId = 1;
             if (ModelState.IsValid) {
                 contribution.ProjectId = id;
-                this.contributionService.AddContributon(contribution); 
+                this.contributionService.AddContributon(contribution);
+                return Ok(this.contributionService.GetContributionById(contribution.Id)); 
             }
             
-            return View(contribution);
+            return UnprocessableEntity(ModelState);
         }
     }
 }
