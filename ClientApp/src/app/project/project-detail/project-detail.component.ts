@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent implements OnInit {
+  public isLoaded = false;
   public project: Project;
 
   constructor(
@@ -18,7 +19,10 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getProjectById(id).subscribe(data => this.project = data);
+    this.service.getProjectById(id).subscribe(data => {
+      this.project = data,
+      this.isLoaded = true
+    });
   }
 
 }

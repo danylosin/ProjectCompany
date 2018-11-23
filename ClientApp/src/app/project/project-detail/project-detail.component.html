@@ -1,11 +1,11 @@
 <article>
-  <section>
+  <section *ngIf="isLoaded">
       <h5>{{ project.title }}</h5>
       <p> 
         <strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}} and
         <strong> to </strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}
       </p>
-        <a class="btn btn-primary" href="#">
+      <a class="btn btn-primary" [routerLink]="['/project', project.id, 'contribution']">
           contributions
           <span class="badge badge-light">{{ project.contributions.length }}</span>
         </a>
