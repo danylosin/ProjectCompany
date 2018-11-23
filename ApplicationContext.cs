@@ -3,12 +3,11 @@ using Microsoft.EntityFrameworkCore.Extensions;
 //using ProjectCompany.Person;
 //using ProjectCompany.Activity;
 using MySql.Data.EntityFrameworkCore.Extensions;
-using ProjectCompany.Seeds;
 using ProjectCompany.Models;
 
 namespace ProjectCompany
 {
-    public class AppContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Employee> employees {get; set;} 
         public DbSet<Skill> skills { get; set; }
@@ -17,12 +16,7 @@ namespace ProjectCompany
 
         public DbSet<EmployeeSkill> employees_skills { get; set; }
 
-        public AppContext(DbContextOptions<AppContext> options):base(options) {}
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL("server=localhost;UserId=root;Password=386991aA;database=ProjectCompany;");
-        }
+        public ApplicationContext(DbContextOptions<ApplicationContext> options):base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

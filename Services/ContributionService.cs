@@ -8,8 +8,8 @@ namespace ProjectCompany.Services
 {
     public class ContributionService
     {
-        protected AppContext appContext;
-        public ContributionService(AppContext appContext)
+        protected ApplicationContext appContext;
+        public ContributionService(ApplicationContext appContext)
         {
             this.appContext = appContext;
         }

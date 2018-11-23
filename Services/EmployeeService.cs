@@ -9,8 +9,8 @@ namespace ProjectCompany.Services
 {
     public class EmployeeService
     {
-        protected AppContext appContext;
-        public EmployeeService(AppContext appContext)
+        protected ApplicationContext appContext;
+        public EmployeeService(ApplicationContext appContext)
         {
             this.appContext = appContext;
         }

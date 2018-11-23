@@ -6,8 +6,8 @@ namespace ProjectCompany.Services
 {
     public class SkillService
     {
-        protected AppContext appContext;
-        public SkillService(AppContext appContext)
+        protected ApplicationContext appContext;
+        public SkillService(ApplicationContext appContext)
         {
             this.appContext = appContext;
         }

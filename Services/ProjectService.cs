@@ -10,8 +10,8 @@ namespace ProjectCompany.Services
 {
     public class ProjectService
     {
-        protected AppContext appContext;
-        public ProjectService(AppContext appContext)
+        protected ApplicationContext appContext;
+        public ProjectService(ApplicationContext appContext)
         {
             this.appContext = appContext;
         }

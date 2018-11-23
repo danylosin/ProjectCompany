@@ -36,8 +36,8 @@ namespace ProjectCompany
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<AppContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("ProjectCompanyDBConnection")));
-            
+            services.AddDbContext<ApplicationContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("ProjectCompanyDBConnection")));
+
             services.AddTransient<ProjectService>();
             services.AddTransient<EmployeeService>();
             services.AddTransient<ContributionService>();

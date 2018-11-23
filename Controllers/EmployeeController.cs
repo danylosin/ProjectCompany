@@ -16,7 +16,7 @@ namespace ProjectCompany.Controllers
         private EmployeeService employeeService;
         private SkillService skillService;
 
-        public EmployeeController(AppContext appContext)
+        public EmployeeController(ApplicationContext appContext)
         {
             this.employeeService = new EmployeeService(appContext);
             this.skillService = new SkillService(appContext);
