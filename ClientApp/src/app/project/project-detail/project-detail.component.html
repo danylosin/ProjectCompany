@@ -1,11 +1,14 @@
 <article *ngIf="isLoaded">
+    <h4>Project details</h4>
+    <section>
+      <div>
+        <h5>{{ project.title }}</h5>
+        <p> 
+          <strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}} and
+          <strong> to </strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}
+         </p>
+      </div>
+    </section>
   <app-new-contribution (onSubmitFormEvent)="createContribution($event)"></app-new-contribution>
-  <section>
-      <h5>{{ project.title }}</h5>
-      <p> 
-        <strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}} and
-        <strong> to </strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}
-      </p>
-  </section>
   <app-contribution-list [contributions]="contributions"></app-contribution-list>
 </article>

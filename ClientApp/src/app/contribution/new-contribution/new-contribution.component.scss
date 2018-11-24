@@ -1,16 +1,20 @@
 @import '../../../styles';
 
 article {
-    @extend .col-xl-12;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-input {
+section {
+    @extend .form-row;
+    > div {
+        @extend .form-group;
+        @extend .col-xl-6;
+    }
+}
+
+input, select {
     @extend .form-control;
-}
-
-div {
-    @extend .form-group;
 }
 
 button {

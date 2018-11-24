@@ -26,22 +26,42 @@ export class NewContributionComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    console.log(this.form.controls.datePeriod["controls"]);
     this.service.getEmployees().subscribe(data => this.employees = data as Employee[]);
   }
 
   onSubmit() {
-    console.log(this.form.value);
     this.onSubmitFormEvent.emit(this.form);;
+  }
+
+  isFormControlInvalid(control): boolean {
+    const currentControl = this.form.controls[control];
+    return currentControl.invalid && 
+        (currentControl.touched || currentControl.dirty);
+  }
+
+  getFormControlErrors(control) {
+    return this.form.controls[control].errors;
+  }
+
+  isDateControlInvalid(control): boolean {
+    const currentControl = this.form.controls.datePeriod["controls"][control];
+    return currentControl.invalid && 
+        (currentControl.touched || currentControl.dirty)
+  }
+
+  getDateControlErrors(control) {
+    return this.form.controls.datePeriod["controls"][control]["errors"];
   }
 
   private buildForm() {
     this.form = this.fb.group({
       title: ['', Validators.required],
       datePeriod: this.fb.group({
-          from: '',
-          to: ''
+          from: ['', Validators.required],
+          to: ['', Validators.required]
         }),
-      employeeId: ''
+      employeeId: ['', Validators.required]
     })
   }
 }

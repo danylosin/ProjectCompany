@@ -1,15 +1,27 @@
 @import '../../../styles';
 
 article {
-    @extend .card;
+    @extend .col-xl-12;
 }
 
 section {
-    @extend .card-body;
+    @extend .card;
+    margin: {
+        top: 10px;
+        bottom: 10px;
+    }
+}
+
+h4 {
+    margin-top: 20px;
 }
 
 h5 {
     @extend .card-title;
+}
+
+div {
+    @extend .card-body;
 }
 
 p {

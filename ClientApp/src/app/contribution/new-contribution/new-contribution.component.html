@@ -1,26 +1,41 @@
 <article>
   <h4>Adding new contribution for project </h4>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="title">Title:</label>
-      <input type="text" formControlName="title" id="title">
-    </div>
-    <div formGroupName="datePeriod">
+    <section>
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" formControlName="title" id="title" [class.is-invalid]="isFormControlInvalid('title')">
+              <div *ngIf="getFormControlErrors('title') && isFormControlInvalid('title')" class="invalid-feedback">
+                  <div *ngIf="getFormControlErrors('title').required">Title is required</div>
+              </div>
+      </div>
+      <div>
+          <label for="employee">Employee:</label>
+          <select id="employee" formControlName="employeeId" [class.is-invalid]="isFormControlInvalid('employeeId')">
+            <option value="" disabled selected>Select employee</option>
+            <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
+          </select>
+          <div *ngIf="getFormControlErrors('employeeId') && isFormControlInvalid('employeeId')" class="invalid-feedback">
+              <div *ngIf="getFormControlErrors('employeeId').required">Employee is required</div>
+          </div>
+      </div>
+    </section>
+    <section formGroupName="datePeriod">
         <div>
           <label for="from">Date from </label>
-          <input type="date" formControlName="from" id="from">
+          <input type="date" formControlName="from" id="from" [class.is-invalid]="isDateControlInvalid('from')">
+          <div *ngIf="getDateControlErrors('from') && isDateControlInvalid('from')" class="invalid-feedback">
+              <div *ngIf="getDateControlErrors('from').required">Date is require</div>
+          </div>
         </div>
         <div>
           <label for="to">Date to</label>
-          <input type="date" formControlName="to" id="to">
+          <input type="date" formControlName="to" id="to" [class.is-invalid]="isDateControlInvalid('to')">
+          <div *ngIf="getDateControlErrors('to') && isDateControlInvalid('to')" class="invalid-feedback">
+              <div *ngIf="getDateControlErrors('to').required">Date is require</div>
+          </div>
         </div>
-      </div>
-      <div>
-        <label for="employee">Employee:</label>
-        <select class="form-control" id="employee" formControlName="employeeId">
-          <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
-        </select>
-      </div>
+    </section>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </article>
