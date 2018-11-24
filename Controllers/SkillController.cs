@@ -16,7 +16,8 @@ namespace ProjectCompany.Controllers
 
         [HttpGet]
         public IActionResult Index(int id)
-        {       
+        {   
+            //
             return Ok(this.skillService.GetAllSkills());
         }
     }

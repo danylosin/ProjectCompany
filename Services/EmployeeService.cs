@@ -4,6 +4,7 @@ using ProjectCompany;
 using System.Linq;
 using System.Collections.Generic;
 using ProjectCompany.Models;
+using ProjectCompany.Models.DTO;
 
 namespace ProjectCompany.Services
 {
@@ -29,25 +30,31 @@ namespace ProjectCompany.Services
                     .First();
         }
 
-        public dynamic GetAllEmployees()
+        public List<EmployeeDetailDTO> GetAllEmployees()
         {
-            // return appContext.employees.Include(e => e.Contributions)
-                    // .ThenInclude(c => c.Project)
-                    // .Include(e => e.Contributions)
-                    // .ThenInclude(c => c.ContributionSkills)
-                    // .ThenInclude(cs => cs.Skill)
-                    // .Include(e => e.EmployeeSkills)
-                    // .ThenInclude(es => es.Skill)
-                    // .ToList();
             return appContext.employees
-                        .Select(e => new
-                        {
-                            Id = e.Id,
-                            Name = e.Name,
-                            Skills = e.EmployeeSkills.Select(es => new { Id = es.Skill.Id, Title = es.Skill.Title})
-                        })
-                        //.Include(e => e.Contributions)
-                        .ToList();     
+                    .Select(e => new EmployeeDetailDTO()
+                    {
+                        Id = e.Id,
+                        Name = e.Name,
+                        Skills = e.EmployeeSkills
+                                .Select(es => new Skill() 
+                                {
+                                    Id = es.SkillId, 
+                                    Title = es.Skill.Title
+                                })
+                                .ToList(),
+                        Contributions = e.Contributions
+                                .Select(c => new Contribution()
+                                {
+                                    Id = c.Id,
+                                    Title = c.Title,
+                                    Project = c.Project,
+                                    DatePeriod = c.DatePeriod,
+                                })
+                                .ToList()
+                    })
+                    .ToList();     
         }
 
         public void AddEmployee(Employee employee)

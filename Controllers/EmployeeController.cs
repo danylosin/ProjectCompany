@@ -36,28 +36,25 @@ namespace ProjectCompany.Controllers
             return Ok(this.employeeService.GetEmployeeById(id));
         }
 
-        [HttpGet("employee/create")]
-        public IActionResult Create()
-        {
-            EmployeeViewModel model = new EmployeeViewModel(this.skillService.GetAllSkills());
-
-            return View(model);
-        }
-
-        [HttpPost("employee/create")]
-        public IActionResult Create([Bind] EmployeeViewModel model)
+        [HttpPost()]
+        public IActionResult Create([FromBody] EmployeeViewModel model)
         {
             if (ModelState.IsValid) {
                 Employee employee = new Employee(model.Name);
-                foreach (var skill in model.SelectedSkills) {
-                    int j;
-                    Int32.TryParse(skill, out j);
-                    employee.EmployeeSkills.Add(new EmployeeSkill() {SkillId = j, Employee = employee});
-                }
+                List<EmployeeSkill> employeeSkills = model.Skills
+                            .Select(s => new EmployeeSkill()
+                            {
+                                SkillId = s.Id,
+                                Employee = employee
+                            })
+                            .ToList(); 
+                employee.EmployeeSkills = employeeSkills;
                 this.employeeService.AddEmployee(employee);
+                
+                return Ok(employee);
             };
 
-            return View(model);
+            return UnprocessableEntity(ModelState);
         }
 
         [HttpPost("employee/createfromjson")]

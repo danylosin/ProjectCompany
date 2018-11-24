@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class EmployeeService {
 
   getEmployeeById(id: number) {
     return this.http.get(`${this.url}/${id}`);
+  }
+
+  addEmployee(form: FormGroup) {
+    return this.http.post(this.url, form.value);
   }
 }
