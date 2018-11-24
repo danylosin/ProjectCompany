@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContributionService } from '../contribution.service';
 import { ActivatedRoute } from '@angular/router';
 import { Contribution } from '../contribution.model';
+import { SkillService } from 'src/app/skill/skill.service';
+import { Skill } from 'src/app/skill/skill-model';
+import Employee from 'src/app/employee/employee.model';
+import { EmployeeService } from 'src/app/employee/employee.service';
 
 @Component({
   selector: 'app-new-contribution',
@@ -11,22 +15,23 @@ import { Contribution } from '../contribution.model';
 })
 export class NewContributionComponent implements OnInit {
   form: FormGroup;
+  employees: Employee[];
+
   @Output() newContributionEvent = new EventEmitter<Contribution>();
   @Output() onSubmitFormEvent = new EventEmitter<FormGroup>();
 
   constructor(private fb: FormBuilder,
-              private service: ContributionService,
-              private route: ActivatedRoute) { }
+              private service: EmployeeService
+              ) { }
 
   ngOnInit() {
     this.buildForm();
+    this.service.getEmployees().subscribe(data => this.employees = data as Employee[]);
   }
 
   onSubmit() {
-    this.onSubmitFormEvent.emit(this.form);
-    //const projectId = +this.route.snapshot.paramMap.get('id');
-    //this.service.newContribution(this.form.value, projectId)
-      //    .subscribe(data => this.newContributionEvent.emit(data as Contribution));
+    console.log(this.form.value);
+    this.onSubmitFormEvent.emit(this.form);;
   }
 
   private buildForm() {
@@ -35,7 +40,8 @@ export class NewContributionComponent implements OnInit {
       datePeriod: this.fb.group({
           from: '',
           to: ''
-        })
+        }),
+      employeeId: ''
     })
   }
 }

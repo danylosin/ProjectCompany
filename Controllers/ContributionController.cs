@@ -27,7 +27,6 @@ namespace ProjectCompany.Controllers
         [HttpPost]
         public IActionResult Create(int id, [FromBody] Contribution contribution)
         {
-            contribution.EmployeeId = 1;
             if (ModelState.IsValid) {
                 contribution.ProjectId = id;
                 this.contributionService.AddContributon(contribution);

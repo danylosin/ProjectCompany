@@ -15,6 +15,12 @@
           <input type="date" formControlName="to" id="to">
         </div>
       </div>
+      <div>
+        <label for="employee">Employee:</label>
+        <select class="form-control" id="employee" formControlName="employeeId">
+          <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
+        </select>
+      </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </article>

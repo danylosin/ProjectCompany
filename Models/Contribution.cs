@@ -19,6 +19,7 @@ namespace ProjectCompany.Models
         public Project Project { get; set; }
 
         [Column("employee_id")]
+        [Required]
         public int EmployeeId { get; set; }
 
         public Employee Employee { get; set; }
