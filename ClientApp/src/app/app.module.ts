@@ -13,6 +13,8 @@ import { ContributionListComponent } from './contribution/contribution-list/cont
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { NewContributionComponent } from './contribution/new-contribution/new-contribution.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { NewEmployeeComponent } from './employee/new-employee/new-employee.component';
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
     ContributionListComponent,
     NewProjectComponent,
     NewContributionComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    NewEmployeeComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,

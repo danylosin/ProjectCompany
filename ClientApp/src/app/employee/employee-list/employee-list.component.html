@@ -10,7 +10,7 @@
     <tr *ngFor="let employee of employees">
       <td>{{ employee.id }}</td>
       <td><a [routerLink]="[ '/employee', employee.id ]">{{ employee.name }}</a></td>
-      <td><span *ngFor="let item of employee.employeeSkills">{{ item.employeeSkill.Skill.Title }}</span></td>
+      <td><span *ngFor="let skill of employee.skills">{{ skill.title }} </span></td>
     </tr>
   </tbody>
 </table>

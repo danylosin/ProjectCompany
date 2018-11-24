@@ -29,12 +29,11 @@ namespace ProjectCompany.Controllers
             return Ok(this.employeeService.GetAllEmployees());
         }
 
-        [HttpGet("employee/{id:int:min(1)}")]
+        [HttpGet("{id:int:min(1)}")]
         public IActionResult Show(int id)
         {
-            ViewBag.employee = this.employeeService.GetEmployeeById(id);
             
-            return View();
+            return Ok(this.employeeService.GetEmployeeById(id));
         }
 
         [HttpGet("employee/create")]

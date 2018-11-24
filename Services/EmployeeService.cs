@@ -29,16 +29,25 @@ namespace ProjectCompany.Services
                     .First();
         }
 
-        public List<Employee> GetAllEmployees()
+        public dynamic GetAllEmployees()
         {
-            return appContext.employees.Include(e => e.Contributions)
-                    .ThenInclude(c => c.Project)
-                    .Include(e => e.Contributions)
-                    .ThenInclude(c => c.ContributionSkills)
-                    .ThenInclude(cs => cs.Skill)
-                    .Include(e => e.EmployeeSkills)
-                    .ThenInclude(es => es.Skill)
-                    .ToList();
+            // return appContext.employees.Include(e => e.Contributions)
+                    // .ThenInclude(c => c.Project)
+                    // .Include(e => e.Contributions)
+                    // .ThenInclude(c => c.ContributionSkills)
+                    // .ThenInclude(cs => cs.Skill)
+                    // .Include(e => e.EmployeeSkills)
+                    // .ThenInclude(es => es.Skill)
+                    // .ToList();
+            return appContext.employees
+                        .Select(e => new
+                        {
+                            Id = e.Id,
+                            Name = e.Name,
+                            Skills = e.EmployeeSkills.Select(es => new { Id = es.Skill.Id, Title = es.Skill.Title})
+                        })
+                        //.Include(e => e.Contributions)
+                        .ToList();     
         }
 
         public void AddEmployee(Employee employee)
