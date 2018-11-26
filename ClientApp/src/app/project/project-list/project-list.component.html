@@ -5,6 +5,7 @@
       <th scope="col">Project name</th>
       <th>Date from</th>
       <th>Date to</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,7 @@
       <td><a [routerLink]="[ '/project', project.id ]">{{ project.title }}</a></td>
       <td>{{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
       <td>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
+      <td><button (click)="onDeleteProject(project)">Delete</button></td>
     </tr>
   </tbody>
 </table>

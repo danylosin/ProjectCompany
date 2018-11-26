@@ -10,5 +10,5 @@
       </div>
     </section>
   <app-new-contribution (onSubmitFormEvent)="createContribution($event)"></app-new-contribution>
-  <app-contribution-list [contributions]="contributions"></app-contribution-list>
+  <app-contribution-list [contributions]="contributions" (onDeleteContributionEvent)="deleteContribution($event)"></app-contribution-list>
 </article>

@@ -17,9 +17,17 @@ namespace ProjectCompany.Services
             return appContext.skills.ToList();
         }
 
+        public Skill GetSkillById(int id) {
+            return appContext.skills.SingleOrDefault(s => s.Id == id);
+        }
         public void AddSkill(Skill skill)
         {
             this.appContext.skills.Add(skill);
+            this.appContext.SaveChanges();
+        }
+
+        public void DeleteSkill(Skill skill) {
+            this.appContext.Remove(skill);
             this.appContext.SaveChanges();
         }
     }

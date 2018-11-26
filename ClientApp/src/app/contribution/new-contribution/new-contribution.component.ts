@@ -1,10 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContributionService } from '../contribution.service';
-import { ActivatedRoute } from '@angular/router';
-import { Contribution } from '../contribution.model';
-import { SkillService } from 'src/app/skill/skill.service';
-import { Skill } from 'src/app/skill/skill-model';
 import Employee from 'src/app/employee/employee.model';
 import { EmployeeService } from 'src/app/employee/employee.service';
 
@@ -16,8 +11,7 @@ import { EmployeeService } from 'src/app/employee/employee.service';
 export class NewContributionComponent implements OnInit {
   form: FormGroup;
   employees: Employee[];
-
-  @Output() newContributionEvent = new EventEmitter<Contribution>();
+  @Input() errors
   @Output() onSubmitFormEvent = new EventEmitter<FormGroup>();
 
   constructor(private fb: FormBuilder,
@@ -26,34 +20,29 @@ export class NewContributionComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    console.log(this.form.controls.datePeriod["controls"]);
     this.service.getEmployees().subscribe(data => this.employees = data as Employee[]);
   }
 
   onSubmit() {
-    this.onSubmitFormEvent.emit(this.form);;
+    this.onSubmitFormEvent.emit(this.form.value);
   }
 
-  isFormControlInvalid(control): boolean {
-    const currentControl = this.form.controls[control];
-    return currentControl.invalid && 
-        (currentControl.touched || currentControl.dirty);
+  get title() {
+    return this.form.get('title');
   }
 
-  getFormControlErrors(control) {
-    return this.form.controls[control].errors;
+  get fromDate() {
+    return this.form.get('datePeriod').get('from');
   }
 
-  isDateControlInvalid(control): boolean {
-    const currentControl = this.form.controls.datePeriod["controls"][control];
-    return currentControl.invalid && 
-        (currentControl.touched || currentControl.dirty)
+  get toDate() {
+    return this.form.get('datePeriod').get('to');
   }
 
-  getDateControlErrors(control) {
-    return this.form.controls.datePeriod["controls"][control]["errors"];
+  get employeeId() {
+    return this.form.get('employeeId');
   }
-
+  
   private buildForm() {
     this.form = this.fb.group({
       title: ['', Validators.required],

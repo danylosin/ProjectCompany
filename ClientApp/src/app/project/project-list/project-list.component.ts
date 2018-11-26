@@ -13,7 +13,15 @@ export class ProjectListComponent implements OnInit {
   constructor(private service: ProjectService) { }
 
   ngOnInit() {
-    this.service.getProjects().subscribe((data: []) => this.projects = data)
+    this.getProjects();
   }
 
+  getProjects() {
+    this.service.getProjects().subscribe(data => this.projects = data)
+  }
+
+  public onDeleteProject(project: Project) {
+    this.service.deleteProject(project)
+        .subscribe(() => this.projects.splice(this.projects.indexOf(project), 1))
+  }
 }

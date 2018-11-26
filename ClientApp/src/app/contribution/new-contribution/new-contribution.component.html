@@ -4,35 +4,35 @@
     <section>
       <div>
         <label for="title">Title:</label>
-        <input type="text" formControlName="title" id="title" [class.is-invalid]="isFormControlInvalid('title')">
-              <div *ngIf="getFormControlErrors('title') && isFormControlInvalid('title')" class="invalid-feedback">
-                  <div *ngIf="getFormControlErrors('title').required">Title is required</div>
+        <input type="text" formControlName="title" id="title" [class.is-invalid]="title.invalid && (title.dirty || title.touched)">
+              <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+                  <div *ngIf="title.errors.required">Title is required</div>
               </div>
       </div>
       <div>
           <label for="employee">Employee:</label>
-          <select id="employee" formControlName="employeeId" [class.is-invalid]="isFormControlInvalid('employeeId')">
+          <select id="employee" formControlName="employeeId" [class.is-invalid]="employeeId.invalid && (employeeId.dirty || employeeId.touched)">
             <option value="" disabled selected>Select employee</option>
             <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
           </select>
-          <div *ngIf="getFormControlErrors('employeeId') && isFormControlInvalid('employeeId')" class="invalid-feedback">
-              <div *ngIf="getFormControlErrors('employeeId').required">Employee is required</div>
+          <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="invalid-feedback">
+              <div *ngIf="employeeId.errors.required">Employee is required</div>
           </div>
       </div>
     </section>
     <section formGroupName="datePeriod">
         <div>
           <label for="from">Date from </label>
-          <input type="date" formControlName="from" id="from" [class.is-invalid]="isDateControlInvalid('from')">
-          <div *ngIf="getDateControlErrors('from') && isDateControlInvalid('from')" class="invalid-feedback">
-              <div *ngIf="getDateControlErrors('from').required">Date is require</div>
+          <input type="date" formControlName="from" id="from" [class.is-invalid]="fromDate.invalid && (fromDate.dirty || fromDate.touched)">
+          <div *ngIf="fromDate.invalid && (fromDate.dirty || fromDate.touched)" class="invalid-feedback">
+              <div *ngIf="fromDate.errors.required">Date is require</div>
           </div>
         </div>
         <div>
           <label for="to">Date to</label>
-          <input type="date" formControlName="to" id="to" [class.is-invalid]="isDateControlInvalid('to')">
-          <div *ngIf="getDateControlErrors('to') && isDateControlInvalid('to')" class="invalid-feedback">
-              <div *ngIf="getDateControlErrors('to').required">Date is require</div>
+          <input type="date" formControlName="to" id="to" [class.is-invalid]="toDate.invalid && (toDate.dirty || toDate.touched)">
+          <div *ngIf="toDate.invalid && (toDate.dirty || toDate.touched)" class="invalid-feedback">
+              <div *ngIf="toDate.errors.required">Date is require</div>
           </div>
         </div>
     </section>

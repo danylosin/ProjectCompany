@@ -3,7 +3,6 @@ import { ProjectService } from '../project.service';
 import { Project } from '../project.model';
 import { ActivatedRoute } from '@angular/router';
 import { Contribution } from 'src/app/contribution/contribution.model';
-import { FormGroup } from '@angular/forms';
 import { ContributionService } from 'src/app/contribution/contribution.service';
 
 @Component({
@@ -32,7 +31,12 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   createContribution($event) {
-    this.contributionService.newContribution($event.value, this.project.id)
+    this.contributionService.newContribution($event, this.project.id)
           .subscribe(data => this.contributions.push(data as Contribution));
+  }
+
+  public deleteContribution(contribution: Contribution) {
+    this.contributionService.deleteContribution(contribution)
+        .subscribe(() => this.contributions.splice(this.contributions.indexOf(contribution) ,1))
   }
 }

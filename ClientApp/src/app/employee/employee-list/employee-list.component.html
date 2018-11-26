@@ -7,10 +7,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr class="element" *ngFor="let employee of employees" [class.selected]="employee === selectedEmployee" (click)="onSelectEmployee(employee)">
       <td>{{ employee.id }}</td>
-      <td><a [routerLink]="[ '/employee', employee.id ]">{{ employee.name }}</a></td>
+      <td>{{ employee.name }}</td>
       <td><span *ngFor="let skill of employee.skills">{{ skill.title }} </span></td>
     </tr>
   </tbody>
 </table>
+
+<app-employee-detail *ngIf="selectedEmployee" [employee]="selectedEmployee"></app-employee-detail>

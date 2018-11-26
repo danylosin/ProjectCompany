@@ -1,17 +1,19 @@
 <section>
-  <app-new-skill (onSubmitFormEvent)="createSkill($event)"></app-new-skill>
+  <app-new-skill (onSubmitFormEvent)="onCreateSkill($event)"></app-new-skill>
     <h4>Available skills</h4>
     <table>
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Skill</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let skill of skills">
             <td>{{ skill.id }}</td>
             <td>{{ skill.title }}</td>
+            <td><button class="btn btn-danger" (click)="onDeleteSkill(skill)">Delete</button></td>
           </tr>
         </tbody>
     </table>

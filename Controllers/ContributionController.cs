@@ -4,7 +4,6 @@ using ProjectCompany.Models;
 
 namespace ProjectCompany.Controllers
 {
-    [Route("api/project/{id:int:min(1)}/[controller]")]
     public class ContributionController : Controller
     {
         private ProjectService projectService;
@@ -24,7 +23,7 @@ namespace ProjectCompany.Controllers
             return View();
         }
         
-        [HttpPost]
+        [HttpPost("api/project/{id:int:min(1)}/[controller]")]
         public IActionResult Create(int id, [FromBody] Contribution contribution)
         {
             if (ModelState.IsValid) {
@@ -34,6 +33,18 @@ namespace ProjectCompany.Controllers
             }
             
             return UnprocessableEntity(ModelState);
+        }
+
+        [HttpDelete("api/contribution/{id:int:min(1)}")]
+        public IActionResult Delete(int id) 
+        {
+            Contribution contribution = this.contributionService.GetContributionById(id);
+            if (contribution == null) {
+                return NotFound();
+            }
+            this.contributionService.RemoveContribution(contribution);
+
+            return Ok();
         }
     }
 }

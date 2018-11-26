@@ -20,8 +20,13 @@ export class SkillListComponent implements OnInit {
     this.service.getSkills().subscribe(data => this.skills = data as Skill[]);
   }
 
-  createSkill($event) {
+  onCreateSkill($event) {
     this.service.createSkill($event.value)
           .subscribe(data => this.skills.push(data as Skill));
+  }
+
+  onDeleteSkill(skill: Skill) {
+    this.service.deleteSkill(skill)
+          .subscribe(data => this.skills.splice(this.skills.indexOf(skill) ,1));
   }
 }

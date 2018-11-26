@@ -12,4 +12,8 @@ export class ContributionService {
   public newContribution(contribution: Contribution, projectId: number): Observable<Contribution> {
     return this.http.post<Contribution>(`api/project/${projectId}/contribution`, contribution);
   }
+
+  public deleteContribution(contribution: Contribution) {
+    return this.http.delete(`api/contribution/${contribution.id}`);
+  }
 }

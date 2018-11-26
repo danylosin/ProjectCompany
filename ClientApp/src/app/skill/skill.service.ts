@@ -17,4 +17,8 @@ export class SkillService {
   public createSkill(skill: Skill) {
     return this.http.post(this.url, skill);
   }
+
+  public deleteSkill(skill: Skill) {
+    return this.http.delete(`${this.url}/${skill.id}`);
+  }
 }

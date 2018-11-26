@@ -3,3 +3,11 @@
 table {
     @extend .table;
 }
+
+.selected {
+    background-color: burlywood;
+}
+
+.element {
+    cursor: pointer;
+}

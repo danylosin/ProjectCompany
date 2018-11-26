@@ -31,5 +31,16 @@ namespace ProjectCompany.Controllers
 
             return UnprocessableEntity(ModelState);
         }
+
+        [HttpDelete("{id:int:min(1)}")]
+        public IActionResult Delete(int id) {
+            Skill skill = this.skillService.GetSkillById(id);
+            if (skill == null) {
+                return NotFound();
+            }
+            this.skillService.DeleteSkill(skill);
+
+            return Ok();
+        }
     }
 }

@@ -48,14 +48,17 @@ namespace ProjectCompany.Controllers
             }
         }
         
-        //[HttpDelete("project/{id:int:min(1)}")]
+        [HttpDelete("{id:int:min(1)}")]
         public IActionResult Delete(int id)
-        {
-            this.projectService.DeleteProjectById(id);
-            if (this.projectService.GetProjectById(id) == null) {
-                return Ok();
+        {   
+            Project project = this.projectService.GetProjectById(id);
+            if (project == null) {
+   
+                return new NotFoundResult();
             }
-            return new NotFoundResult();
+            this.projectService.DeleteProject(project);
+
+            return Ok();
         }
 
         //[HttpGet("project/recrute")]
