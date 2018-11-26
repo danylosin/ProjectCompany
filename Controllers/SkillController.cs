@@ -20,5 +20,16 @@ namespace ProjectCompany.Controllers
             //
             return Ok(this.skillService.GetAllSkills());
         }
+        
+        [HttpPost]
+        public IActionResult Create([FromBody] Skill skill)
+        {
+            if (ModelState.IsValid) {
+                this.skillService.AddSkill(skill);
+                return Ok(skill);
+            }
+
+            return UnprocessableEntity(ModelState);
+        }
     }
 }

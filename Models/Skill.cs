@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectCompany.Models
 {
     public class Skill
     {
         public int Id { get; set;}
+        
+        [Required]
         public string Title { get; set; }
 
         public List<EmployeeSkill> EmployeeSkills { get; set;}

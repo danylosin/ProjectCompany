@@ -1,0 +1,18 @@
+<section>
+  <app-new-skill (onSubmitFormEvent)="createSkill($event)"></app-new-skill>
+    <h4>Available skills</h4>
+    <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Skill</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let skill of skills">
+            <td>{{ skill.id }}</td>
+            <td>{{ skill.title }}</td>
+          </tr>
+        </tbody>
+    </table>
+</section>

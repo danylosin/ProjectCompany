@@ -7,6 +7,7 @@ import { NewContributionComponent } from "./contribution/new-contribution/new-co
 import { EmployeeListComponent } from "./employee/employee-list/employee-list.component";
 import { EmployeeDetailComponent } from "./employee/employee-detail/employee-detail.component";
 import { NewEmployeeComponent } from "./employee/new-employee/new-employee.component";
+import { SkillListComponent } from "./skill/skill-list/skill-list.component";
 
 export const routes: Routes = [
     { path: '', component: ProjectListComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'project/:id', component: ProjectDetailComponent },
     { path: 'employee', component: EmployeeListComponent, pathMatch: 'full' },
     { path: 'employee/add', component: NewEmployeeComponent, pathMatch: 'full' },
-    { path: 'employee/:id', component: EmployeeDetailComponent }
+    { path: 'employee/:id', component: EmployeeDetailComponent },
+    { path: 'skill', component: SkillListComponent, pathMatch: 'full'}
   ];

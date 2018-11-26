@@ -1,0 +1,13 @@
+@import '../../../styles';
+
+table {
+    @extend .table;
+}
+
+section {
+    @extend .col-xl-12;
+}
+
+h4 {
+    margin-top: 20px;
+}
