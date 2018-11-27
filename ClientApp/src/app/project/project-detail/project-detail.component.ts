@@ -26,7 +26,7 @@ export class ProjectDetailComponent implements OnInit {
     private route: ActivatedRoute
     ) { 
       this.editingContribution = {
-        title: '',
+        title: null,
         datePeriod: {
           from: null,
           to: null,
@@ -49,8 +49,13 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   public createContribution($event) {
-    this.contributionService.newContribution($event, this.project.id)
+    if (this.editingContribution.title !== null) {
+      this.contributionService.editContribution($event, this.editingContribution.id)
+          .subscribe(data => this.contributions.splice(this.contributions.indexOf($event), 1, data as Contribution))
+    } else {
+      this.contributionService.newContribution($event, this.project.id)
           .subscribe(data => this.contributions.push(data as Contribution));
+    }
   }
 
   public editContribution($event) {

@@ -10,8 +10,9 @@ import { Contribution } from '../contribution.model';
 })
 export class NewContributionComponent implements OnInit, OnChanges {
   form: FormGroup;
+
   @Input() employees: Employee[];
-  @Input() currentContribution: Contribution;
+  @Input() selectedContribution: Contribution;
 
   @Output() onSubmitFormEvent = new EventEmitter<FormGroup>();
 
@@ -30,8 +31,8 @@ export class NewContributionComponent implements OnInit, OnChanges {
   }
 
   private buildForm() {
-    let datePeriodFrom = this.currentContribution.datePeriod.from;
-    let datePeriodTo = this.currentContribution.datePeriod.to;
+    let datePeriodFrom = this.selectedContribution.datePeriod.from;
+    let datePeriodTo = this.selectedContribution.datePeriod.to;
 
     if (datePeriodFrom || datePeriodTo) {
       datePeriodFrom = datePeriodFrom.split('T')[0];
@@ -39,12 +40,12 @@ export class NewContributionComponent implements OnInit, OnChanges {
     }
 
     this.form = this.fb.group({
-      title: [this.currentContribution.title, Validators.required],
+      title: [this.selectedContribution.title, Validators.required],
       datePeriod: this.fb.group({
           from: [datePeriodFrom, Validators.required],
           to: [datePeriodTo, Validators.required]
         }),
-      employeeId: [this.currentContribution.employeeId, Validators.required]
+      employeeId: [this.selectedContribution.employeeId, Validators.required]
     })
   }
 

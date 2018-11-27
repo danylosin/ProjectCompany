@@ -11,7 +11,7 @@
     </section>
   <app-new-contribution  [employees]="employeesForForm" 
                         (onSubmitFormEvent)="createContribution($event)" 
-                        [currentContribution]="editingContribution">
+                        [selectedContribution]="editingContribution">
   </app-new-contribution>
   <app-contribution-list [contributions]="contributions" 
                         (onDeleteContributionEvent)="deleteContribution($event)" 

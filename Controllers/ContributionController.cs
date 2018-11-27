@@ -35,6 +35,24 @@ namespace ProjectCompany.Controllers
             return UnprocessableEntity(ModelState);
         }
 
+        [HttpPut("api/contribution/{id:int:min(1)}")]
+        public IActionResult Put(int id, [FromBody] Contribution contribution) 
+        {
+            Contribution editingContribution = this.contributionService.GetContributionById(id);
+
+            if (editingContribution == null) {
+                return NotFound();
+            }
+
+            editingContribution.EmployeeId = contribution.EmployeeId;
+            editingContribution.Title = contribution.Title;
+            editingContribution.DatePeriod = contribution.DatePeriod;
+
+            this.contributionService.UpdateContribution(editingContribution);
+
+            return Ok(editingContribution);
+        }
+
         [HttpDelete("api/contribution/{id:int:min(1)}")]
         public IActionResult Delete(int id) 
         {
