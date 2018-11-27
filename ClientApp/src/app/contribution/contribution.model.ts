@@ -7,7 +7,7 @@ export interface Contribution {
     title: string;
     datePeriod: DatePeriod;
     readonly project?: Project;
-    projectId?: number;
-    readonly employee?: Employee;
+    readonly projectId?: number;
+    readonly employee?: any;
     employeeId: number;
 }

@@ -15,14 +15,6 @@ namespace ProjectCompany.Controllers
             this.contributionService = contributionService;
         }
 
-        //[HttpGet("project/{id:int:min(1)}/contribution")]
-        public IActionResult Index(int id)
-        {
-            ViewBag.project = this.projectService.GetProjectById(id);
-            
-            return View();
-        }
-        
         [HttpPost("api/project/{id:int:min(1)}/[controller]")]
         public IActionResult Create(int id, [FromBody] Contribution contribution)
         {
@@ -35,8 +27,8 @@ namespace ProjectCompany.Controllers
             return UnprocessableEntity(ModelState);
         }
 
-        [HttpPut("api/contribution/{id:int:min(1)}")]
-        public IActionResult Put(int id, [FromBody] Contribution contribution) 
+        [HttpPatch("api/contribution/{id:int:min(1)}")]
+        public IActionResult Patch(int id, [FromBody] Contribution contribution) 
         {
             Contribution editingContribution = this.contributionService.GetContributionById(id);
 
@@ -44,11 +36,16 @@ namespace ProjectCompany.Controllers
                 return NotFound();
             }
 
-            editingContribution.EmployeeId = contribution.EmployeeId;
-            editingContribution.Title = contribution.Title;
-            editingContribution.DatePeriod = contribution.DatePeriod;
+            if (ModelState.IsValid) {
+                editingContribution.EmployeeId = contribution.EmployeeId;
+                editingContribution.Title = contribution.Title;
+                editingContribution.DatePeriod = contribution.DatePeriod;
 
-            this.contributionService.UpdateContribution(editingContribution);
+                this.contributionService.UpdateContribution(editingContribution);
+
+            } else {
+                return UnprocessableEntity(ModelState);
+            }
 
             return Ok(editingContribution);
         }

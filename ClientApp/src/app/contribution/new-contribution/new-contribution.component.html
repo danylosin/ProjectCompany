@@ -1,5 +1,5 @@
 <article>
-  <h4 *ngIf="selectedContribution?.title; else adding">Editing contribution</h4>
+  <h4 *ngIf="selectedContribution?.title; else adding">Editing {{ selectedContribution?.title }}</h4>
   <ng-template #adding>
     <h4>Adding new contribution for project</h4>
   </ng-template>

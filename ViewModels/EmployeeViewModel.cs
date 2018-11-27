@@ -9,7 +9,7 @@ namespace ProjectCompany.ViewModels
 {
     public class EmployeeViewModel 
     {
-        [Required(ErrorMessage = "Pls")]
+        [Required]
         public string Name {get; set; }
         public List<Skill> Skills { get; set;}
         

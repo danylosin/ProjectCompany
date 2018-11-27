@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace projectcompany.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {  
+        {
             migrationBuilder.CreateTable(
                 name: "employees",
                 columns: table => new
@@ -41,7 +41,7 @@ namespace projectcompany.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -144,6 +144,12 @@ namespace projectcompany.Migrations
                 name: "IX_employees_skills_skill_id",
                 table: "employees_skills",
                 column: "skill_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_skills_Title",
+                table: "skills",
+                column: "Title",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

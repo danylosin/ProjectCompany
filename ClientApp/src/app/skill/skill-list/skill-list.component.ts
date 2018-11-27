@@ -9,6 +9,7 @@ import { SkillService } from '../skill.service';
 })
 export class SkillListComponent implements OnInit {
   skills: Skill[];
+  errorsFromForm: {};
 
   constructor(private service: SkillService) { }
 
@@ -22,7 +23,8 @@ export class SkillListComponent implements OnInit {
 
   onCreateSkill($event) {
     this.service.createSkill($event.value)
-          .subscribe(data => this.skills.push(data as Skill));
+          .subscribe(data => this.skills.push(data as Skill),
+                    (errors) => this.errorsFromForm = errors.error);
   }
 
   onDeleteSkill(skill: Skill) {

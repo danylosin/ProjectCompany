@@ -7,7 +7,6 @@ import { FormGroup } from '@angular/forms';
 })
 export class EmployeeService {
   private url = 'api/employee';
-
   constructor(private http: HttpClient) { }
 
   getEmployees() {
@@ -19,6 +18,6 @@ export class EmployeeService {
   }
 
   addEmployee(form: FormGroup) {
-    return this.http.post(this.url, form.value);
+    return this.http.post(this.url, form.value, { observe: 'response' });
   }
 }

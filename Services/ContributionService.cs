@@ -19,10 +19,7 @@ namespace ProjectCompany.Services
             return appContext.contributions
                     .Include(c => c.Project)
                     .Include(c => c.Employee)
-                    .Include(c => c.ContributionSkills)
-                    .ThenInclude(cs => cs.Skill)
-                    .Where(c => c.Id == id)
-                    .First();
+                    .SingleOrDefault(c => c.Id == id);
         }
 
         public void AddContributon(Contribution contribution)

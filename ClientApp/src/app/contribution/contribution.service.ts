@@ -13,9 +13,8 @@ export class ContributionService {
     return this.http.post<Contribution>(`api/project/${projectId}/contribution`, contribution);
   }
 
-  public editContribution(contribution: Contribution, selectedContributionId: number): Observable<Contribution> {
-    console.log(contribution);
-    return this.http.put<Contribution>(`api/contribution/${selectedContributionId}`, contribution);
+  public editContribution(newData: Contribution, selectedContributionId: number): Observable<Contribution> {
+    return this.http.patch<Contribution>(`api/contribution/${selectedContributionId}`, newData);
   }
 
   public deleteContribution(contribution: Contribution) {

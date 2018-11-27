@@ -24,7 +24,10 @@ namespace ProjectCompany
 
             this.OnEmployeeSkillCreating(modelBuilder); 
 
-            this.OnContributionSkillModelCreating(modelBuilder);  
+            this.OnContributionSkillModelCreating(modelBuilder); 
+            modelBuilder.Entity<Skill>()
+                    .HasIndex(s => s.Title)
+                    .IsUnique();
         }
 
         protected void OnContributionAndProjectModelCreating(ModelBuilder modelBuilder)

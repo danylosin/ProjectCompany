@@ -8,6 +8,7 @@ namespace ProjectCompany.Models
         public int Id { get; set;}
         
         [Required]
+        
         public string Title { get; set; }
 
         public List<EmployeeSkill> EmployeeSkills { get; set;}

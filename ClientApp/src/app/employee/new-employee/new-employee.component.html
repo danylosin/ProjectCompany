@@ -1,5 +1,13 @@
 <article>
   <h4>Adding new employee</h4>
+  <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+  This is a success alert—check it out!
+  </div>
+  <div *ngIf="errors" class="alert alert-danger" role="alert">
+      <p *ngFor="let message of errors.Name">
+          {{ message }}
+      </p>
+  </div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
       <label for="name">Name:</label>

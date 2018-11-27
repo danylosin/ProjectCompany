@@ -1,5 +1,5 @@
 <section>
-  <app-new-skill (onSubmitFormEvent)="onCreateSkill($event)"></app-new-skill>
+  <app-new-skill (onSubmitFormEvent)="onCreateSkill($event)" [errors]="errorsFromForm"></app-new-skill>
     <h4>Available skills</h4>
     <table>
         <thead>

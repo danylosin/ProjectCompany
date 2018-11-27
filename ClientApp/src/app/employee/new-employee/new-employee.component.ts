@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SkillService } from 'src/app/skill/skill.service';
 import { EmployeeService } from '../employee.service';
@@ -9,7 +9,10 @@ import { Skill } from 'src/app/skill/skill-model';
   templateUrl: './new-employee.component.html',
   styleUrls: ['./new-employee.component.scss']
 })
-export class NewEmployeeComponent implements OnInit {
+export class NewEmployeeComponent implements OnInit{
+  public isSuccess = false;
+  public errors: any;
+  
   form: FormGroup
   skills: Skill[]
 
@@ -24,13 +27,17 @@ export class NewEmployeeComponent implements OnInit {
 
   private buildForm() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      skills: ''
+      name: [''],
+      skills: ['', Validators.required]
     })
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    this.employeeService.addEmployee(this.form).subscribe();
+    this.employeeService.addEmployee(this.form)
+        .subscribe(
+          data => this.isSuccess = true, 
+          (error) => {
+            this.errors = error.error
+        });
   }
 }

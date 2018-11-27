@@ -14,6 +14,7 @@ import { EmployeeService } from 'src/app/employee/employee.service';
 })
 export class ProjectDetailComponent implements OnInit {
   public isLoaded = false;
+  
   public project: Project;
   public contributions: Contribution[];
   public employeesForForm: Employee[];

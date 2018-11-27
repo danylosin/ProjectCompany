@@ -20,15 +20,28 @@ namespace ProjectCompany.Services
         public Skill GetSkillById(int id) {
             return appContext.skills.SingleOrDefault(s => s.Id == id);
         }
-        public void AddSkill(Skill skill)
+        public bool AddSkill(Skill skill)
         {
-            this.appContext.skills.Add(skill);
-            this.appContext.SaveChanges();
+            if (!this.isUniqueSkillTitle(skill)) {
+                this.appContext.skills.Add(skill);
+                this.appContext.SaveChanges();
+
+                return true;
+            }
+            
+            return false;
         }
 
         public void DeleteSkill(Skill skill) {
             this.appContext.Remove(skill);
             this.appContext.SaveChanges();
+        }
+
+        public bool isUniqueSkillTitle(Skill skill) {
+            if (this.appContext.skills.SingleOrDefault(s => s.Title == skill.Title) != null) {
+                return true;
+            }
+            return false;
         }
     }
 }

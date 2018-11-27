@@ -9,8 +9,8 @@ using ProjectCompany;
 namespace projectcompany.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181123205505_Init")]
-    partial class Init
+    [Migration("20181127155210_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,9 +102,13 @@ namespace projectcompany.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Title")
+                        .IsUnique();
 
                     b.ToTable("skills");
                 });

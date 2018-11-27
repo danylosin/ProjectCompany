@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectCompany.Services;
 using ProjectCompany.Models;
+using System.Collections.Generic;
 
 namespace ProjectCompany.Controllers
 {
@@ -24,7 +25,7 @@ namespace ProjectCompany.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Skill skill)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid && !this.skillService.isUniqueSkillTitle(skill)) {
                 this.skillService.AddSkill(skill);
                 return Ok(skill);
             }
