@@ -1,20 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contribution } from '../contribution.model';
-import { ContributionService } from '../contribution.service';
+
 @Component({
   selector: 'app-contribution-list',
   templateUrl: './contribution-list.component.html',
-  styleUrls: ['./contribution-list.component.scss'],
-  inputs: ['contributions']
+  styleUrls: ['./contribution-list.component.scss']
 })
 
 export class ContributionListComponent implements OnInit {
-  contributions: Contribution[];
-  @Output() onDeleteContributionEvent = new EventEmitter<Contribution>();
+  @Input() contributions: Contribution[];
 
-  constructor(private service: ContributionService) { }
+  @Output() onDeleteContributionEvent = new EventEmitter<Contribution>();
+  @Output() onEditContributionEvent = new EventEmitter<Contribution>();
+
+  constructor() { }
 
   ngOnInit() {
+  }
+
+  public onEditContribution(contribution: Contribution) {
+    this.onEditContributionEvent.emit(contribution);
   }
 
   public onDeleteContribution(contribution: Contribution) {

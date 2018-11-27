@@ -1,4 +1,4 @@
 export interface DatePeriod {
-    from: Date,
-    to: Date
+    from: any,
+    to: any
 }

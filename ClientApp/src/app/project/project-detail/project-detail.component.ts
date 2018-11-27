@@ -4,6 +4,8 @@ import { Project } from '../project.model';
 import { ActivatedRoute } from '@angular/router';
 import { Contribution } from 'src/app/contribution/contribution.model';
 import { ContributionService } from 'src/app/contribution/contribution.service';
+import Employee from 'src/app/employee/employee.model';
+import { EmployeeService } from 'src/app/employee/employee.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -14,12 +16,24 @@ export class ProjectDetailComponent implements OnInit {
   public isLoaded = false;
   public project: Project;
   public contributions: Contribution[];
+  public employeesForForm: Employee[];
+  public editingContribution: Contribution;
 
   constructor(
     private projectService: ProjectService,
     private contributionService: ContributionService,
+    private employeeService: EmployeeService,
     private route: ActivatedRoute
-    ) { }
+    ) { 
+      this.editingContribution = {
+        title: '',
+        datePeriod: {
+          from: null,
+          to: null,
+        },
+        employeeId: 0
+      };
+    }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -28,15 +42,23 @@ export class ProjectDetailComponent implements OnInit {
       this.contributions = data.contributions;
       this.isLoaded = true
     });
+
+    this.employeeService.getEmployees().subscribe(data => {
+      this.employeesForForm = data as Employee[]
+    })
   }
 
-  createContribution($event) {
+  public createContribution($event) {
     this.contributionService.newContribution($event, this.project.id)
           .subscribe(data => this.contributions.push(data as Contribution));
   }
 
+  public editContribution($event) {
+    this.editingContribution = $event;
+  }
+
   public deleteContribution(contribution: Contribution) {
     this.contributionService.deleteContribution(contribution)
-        .subscribe(() => this.contributions.splice(this.contributions.indexOf(contribution) ,1))
+        .subscribe(() => this.contributions.splice(this.contributions.indexOf(contribution), 1))
   }
 }

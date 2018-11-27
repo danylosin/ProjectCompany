@@ -24,5 +24,4 @@ export class NewProjectComponent implements OnInit {
   onSubmit(form) {
     this.service.createProject(form.value).subscribe(data => console.log(data));
   }
-
 }

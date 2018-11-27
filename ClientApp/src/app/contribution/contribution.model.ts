@@ -8,6 +8,6 @@ export interface Contribution {
     datePeriod: DatePeriod;
     readonly project?: Project;
     projectId?: number;
-    readonly employee: Employee;
+    readonly employee?: Employee;
     employeeId: number;
 }

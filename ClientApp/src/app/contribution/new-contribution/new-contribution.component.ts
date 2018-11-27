@@ -1,30 +1,51 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Employee from 'src/app/employee/employee.model';
-import { EmployeeService } from 'src/app/employee/employee.service';
+import { Contribution } from '../contribution.model';
 
 @Component({
   selector: 'app-new-contribution',
   templateUrl: './new-contribution.component.html',
   styleUrls: ['./new-contribution.component.scss']
 })
-export class NewContributionComponent implements OnInit {
+export class NewContributionComponent implements OnInit, OnChanges {
   form: FormGroup;
-  employees: Employee[];
-  @Input() errors
+  @Input() employees: Employee[];
+  @Input() currentContribution: Contribution;
+
   @Output() onSubmitFormEvent = new EventEmitter<FormGroup>();
 
-  constructor(private fb: FormBuilder,
-              private service: EmployeeService
-              ) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
-    this.service.getEmployees().subscribe(data => this.employees = data as Employee[]);
+  }
+  
+  ngOnChanges() {
+    this.buildForm();
   }
 
   onSubmit() {
     this.onSubmitFormEvent.emit(this.form.value);
+  }
+
+  private buildForm() {
+    let datePeriodFrom = this.currentContribution.datePeriod.from;
+    let datePeriodTo = this.currentContribution.datePeriod.to;
+
+    if (datePeriodFrom || datePeriodTo) {
+      datePeriodFrom = datePeriodFrom.split('T')[0];
+      datePeriodTo = datePeriodTo.split('T')[0];
+    }
+
+    this.form = this.fb.group({
+      title: [this.currentContribution.title, Validators.required],
+      datePeriod: this.fb.group({
+          from: [datePeriodFrom, Validators.required],
+          to: [datePeriodTo, Validators.required]
+        }),
+      employeeId: [this.currentContribution.employeeId, Validators.required]
+    })
   }
 
   get title() {
@@ -41,16 +62,5 @@ export class NewContributionComponent implements OnInit {
 
   get employeeId() {
     return this.form.get('employeeId');
-  }
-  
-  private buildForm() {
-    this.form = this.fb.group({
-      title: ['', Validators.required],
-      datePeriod: this.fb.group({
-          from: ['', Validators.required],
-          to: ['', Validators.required]
-        }),
-      employeeId: ['', Validators.required]
-    })
   }
 }

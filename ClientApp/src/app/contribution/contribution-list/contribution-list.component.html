@@ -17,7 +17,9 @@
         <td>{{ contribution.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
         <td>{{ contribution.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
         <td>{{ contribution.employee.name }}</td>
-        <td><button class="btn btn-danger" (click)="onDeleteContribution(contribution)">Delete</button></td>
+        <td>
+          <button class="success" (click)="onEditContribution(contribution)">Edit</button>  |  
+          <button class="danger" (click)="onDeleteContribution(contribution)">Delete</button></td>
       </tr>
     </tbody>
 </table>

@@ -9,6 +9,12 @@
          </p>
       </div>
     </section>
-  <app-new-contribution (onSubmitFormEvent)="createContribution($event)"></app-new-contribution>
-  <app-contribution-list [contributions]="contributions" (onDeleteContributionEvent)="deleteContribution($event)"></app-contribution-list>
+  <app-new-contribution  [employees]="employeesForForm" 
+                        (onSubmitFormEvent)="createContribution($event)" 
+                        [currentContribution]="editingContribution">
+  </app-new-contribution>
+  <app-contribution-list [contributions]="contributions" 
+                        (onDeleteContributionEvent)="deleteContribution($event)" 
+                        (onEditContributionEvent)="editContribution($event)">
+  </app-contribution-list>
 </article>
