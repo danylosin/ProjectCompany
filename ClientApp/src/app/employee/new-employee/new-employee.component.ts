@@ -33,6 +33,7 @@ export class NewEmployeeComponent implements OnInit{
   }
 
   onSubmit() {
+    this.errors = null;
     this.employeeService.addEmployee(this.form)
         .subscribe(
           data => this.isSuccess = true, 

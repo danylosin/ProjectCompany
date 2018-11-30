@@ -18,18 +18,21 @@ namespace ProjectCompany.Controllers
         [HttpGet]
         public IActionResult Index(int id)
         {   
-            //
             return Ok(this.skillService.GetAllSkills());
         }
         
         [HttpPost]
         public IActionResult Create([FromBody] Skill skill)
-        {
+        {   
+            if (this.skillService.isUniqueSkillTitle(skill)) {
+                ModelState.AddModelError("Title", "This skill is already exist");
+            }
+
             if (ModelState.IsValid && !this.skillService.isUniqueSkillTitle(skill)) {
                 this.skillService.AddSkill(skill);
                 return Ok(skill);
             }
-
+            
             return UnprocessableEntity(ModelState);
         }
 

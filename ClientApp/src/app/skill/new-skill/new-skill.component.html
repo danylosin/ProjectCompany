@@ -1,6 +1,8 @@
 <h4>Adding new skill</h4>
-<div *ngIf="errors">
-    {{errors.errors}}
+<div *ngIf="errors" class="alert alert-danger" role="alert">
+    <p *ngFor="let message of errors.Title">
+        {{ message }}
+    </p>
 </div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-row">
@@ -16,7 +18,7 @@
             </div>
         </div>
         <div class="col-md-4 mb-3">
-           <button type="submit">Submit</button>
+           <button type="submit" [disabled]="!form.valid">Submit</button>
         </div>
     </div>  
 </form>

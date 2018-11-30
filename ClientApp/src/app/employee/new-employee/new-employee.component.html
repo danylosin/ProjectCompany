@@ -1,7 +1,7 @@
 <article>
   <h4>Adding new employee</h4>
   <div *ngIf="isSuccess" class="alert alert-success" role="alert">
-  This is a success alert—check it out!
+      New employee has been created
   </div>
   <div *ngIf="errors" class="alert alert-danger" role="alert">
       <p *ngFor="let message of errors.Name">
