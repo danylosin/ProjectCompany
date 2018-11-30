@@ -1,1 +1,36 @@
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+//@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 4px;
+}
+th {
+    background-color: #6ddaff;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+tr:hover {
+    background-color: lightgreen;
+}

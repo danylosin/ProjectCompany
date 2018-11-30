@@ -1,12 +1,10 @@
-@import '../../../styles';
+//@import '../../../styles';
+
+.asd {
+    overflow-x: auto;
+
+}
 
 table {
-    @extend .table;
-}
-
-button {
-    @extend .btn;
-}
-button.delete {
-    @extend .btn-danger;
+    width: 100%;
 }

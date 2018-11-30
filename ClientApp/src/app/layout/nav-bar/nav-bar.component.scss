@@ -1,15 +1,26 @@
-@import '../../../styles';
+//@import '../../../styles';
 
-nav {
-    @extend .navbar;
-    @extend .navbar-dark;
-    @extend .bg-primary;
-    @extend .navbar-expand-lg;
+nav > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-li {
-    @extend .nav-item;
-    a {
-        @extend .nav-link;
-    }
+nav > ul > li {
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+nav > ul > li:hover {
+    background-color: #38c5f4;
+}
+
+nav > ul > li > a {
+    color: black;
+    text-decoration: none;
+}
+
+nav > ul > li > a:hover {
+    color: #333333;
 }
