@@ -17,6 +17,8 @@ import { NewEmployeeComponent } from './employee/new-employee/new-employee.compo
 import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 import { SkillListComponent } from './skill/skill-list/skill-list.component';
 import { NewSkillComponent } from './skill/new-skill/new-skill.component';
+import { AsideComponent } from './layout/aside/aside.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { NewSkillComponent } from './skill/new-skill/new-skill.component';
     NewEmployeeComponent,
     EmployeeDetailComponent,
     SkillListComponent,
-    NewSkillComponent
+    NewSkillComponent,
+    AsideComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

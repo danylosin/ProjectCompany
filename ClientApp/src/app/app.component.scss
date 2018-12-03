@@ -9,9 +9,19 @@ div > div {
 }
 
 aside {
-    @extend .col-xl-3, .order-1, .col-sm-12;
+    @extend .order-1, .col;
+    flex: 0 0 200px;
+    background-color: grey;
 }
 
 main {
-    @extend .col-xl-9, .order-2, .col-sm-12;
+    @extend .order-2, .col;
+}
+
+footer {
+ //@extend .bg-primary, .fixed-bottom;
+}
+
+header {
+    margin-bottom: 70px;
 }

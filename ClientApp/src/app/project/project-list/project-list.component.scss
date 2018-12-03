@@ -1,7 +1,7 @@
 @import '../../../styles';
 
-section {
-    @extend .table-responsive;
+div {
+   @extend .table-responsive;
 }
 table {
     @extend .table;

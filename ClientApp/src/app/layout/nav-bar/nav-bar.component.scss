@@ -1,7 +1,7 @@
 @import '../../../styles';
 
 nav {
-    @extend .navbar, .navbar-expand-md, .navbar-dark, .bg-primary;
+    @extend .navbar, .navbar-expand-md, .navbar-dark, .bg-primary, .fixed-top;
     > a {
         @extend .navbar-brand;
     }
