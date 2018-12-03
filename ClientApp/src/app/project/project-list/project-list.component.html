@@ -1,20 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Project name</th>
-      <th>Date from</th>
-      <th>Date to</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let project of projects">
-      <td>{{ project.id }}</td>
-      <td><a [routerLink]="[ '/project', project.id ]">{{ project.title }}</a></td>
-      <td>{{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
-      <td>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
-      <td><button class="delete" (click)="onDeleteProject(project)">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+<section>
+    <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Project name</th>
+            <th>Date from</th>
+            <th>Date to</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.id }}</td>
+            <td><a [routerLink]="[ '/project', project.id ]">{{ project.title }}</a></td>
+            <td>{{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
+            <td>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
+            <td><button class="delete" (click)="onDeleteProject(project)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+</section>

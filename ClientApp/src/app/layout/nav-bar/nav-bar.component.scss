@@ -1,15 +1,28 @@
 @import '../../../styles';
 
 nav {
-    @extend .navbar;
-    @extend .navbar-dark;
-    @extend .bg-primary;
-    @extend .navbar-expand-lg;
-}
+    @extend .navbar, .navbar-dark, .bg-primary, .navbar-expand-lg;
+    > a {
+        @extend .navbar-brand;
+    }
 
-li {
-    @extend .nav-item;
-    a {
-        @extend .nav-link;
+    button {
+        @extend .navbar-toggler;
+        > span {
+            @extend .navbar-toggler-icon;
+        }
+    }
+
+    div {
+        @extend .collapse, .navbar-collapse;
+        ul {
+            @extend .navbar-nav, .mr-auto;
+            li {
+                @extend .nav-item;
+                a {
+                    @extend .nav-link;
+                }
+            }
+        }
     }
 }

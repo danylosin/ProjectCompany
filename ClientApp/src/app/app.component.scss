@@ -1,0 +1,17 @@
+@import '../styles.scss';
+
+div {
+    @extend .container-fluid;
+}
+
+div > div {
+    @extend .row;
+}
+
+aside {
+    @extend .col-xl-3, .order-1, .col-sm-12;
+}
+
+main {
+    @extend .col-xl-9, .order-2, .col-sm-12;
+}
