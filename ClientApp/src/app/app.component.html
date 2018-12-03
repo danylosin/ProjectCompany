@@ -1,13 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-  <app-nav-bar></app-nav-bar>
+    <app-nav-bar></app-nav-bar>
 </header>
-<div class="container" id="content">
+<div class="container">
+  <main>
+      <router-outlet></router-outlet>
+  </main>  
   <aside>
     hello
-  </aside>
-  <main>
-    <router-outlet></router-outlet>
-  </main>    
+  </aside>  
 </div>
+<footer>
+  My Footer
+</footer>
 

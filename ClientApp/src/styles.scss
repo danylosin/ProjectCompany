@@ -1,5 +1,10 @@
 //@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+* {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,12 +12,7 @@ body {
 
 ul {
     margin: 0;
-    padding: 0;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif;
+    padding: 0; 
 }
 
 table {
@@ -33,4 +33,28 @@ td:first-child {
 
 tr:hover {
     background-color: lightgreen;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 700;
+}
+h1 {
+    font-size: 2.35em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.75em;
+}
+h4 {
+    font-size: 1.5em;
+}
+h5 {
+    font-size: 1.25em;
+}
+h6 {
+    font-size: 1em;
 }
