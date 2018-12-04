@@ -1,15 +1,25 @@
 @import '../../../styles';
 
-div {
-   @extend .table-responsive-sm;
-}
-table {
-    @extend .table;
+article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
+@media screen and (max-width: 300px) {
+    article {
+        justify-content: center;
+    }
+}
+
+section {
+    border: 1px solid black;
+    margin: 5px;
+}
 button {
     @extend .btn;
 }
 button.delete {
     @extend .btn-danger;
 }
+

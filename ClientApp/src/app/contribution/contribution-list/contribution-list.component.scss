@@ -1,12 +1,5 @@
 @import '../../../styles';
 
-#wrapper {
-    @extend .table-responsive;
-}
-
-table {
-    @extend .table;
-}
 
 button {
     @extend .btn;
@@ -20,6 +13,19 @@ button.success {
     @extend .btn-success;
 }
 
-#actions { 
-    min-width: 200px;
+article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 300px) {
+    article {
+        justify-content: center;
+    }
+}
+
+section {
+    border: 1px solid black;
+    margin: 5px;
 }

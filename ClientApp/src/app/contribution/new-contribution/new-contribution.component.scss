@@ -4,7 +4,7 @@ section {
     @extend .form-row;
     > div {
         @extend .form-group;
-        @extend .col-xl-6, .col-md-12, .col-sm-6;
+        @extend .col-xl-6, .col-lg-6, .col-md-12, .col-sm-12;
     }
 }
 

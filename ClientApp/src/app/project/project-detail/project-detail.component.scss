@@ -2,26 +2,21 @@
 
 article {
     //@extend .col-xl-12;
-    @extend .row;
-    //display: flex;
-    //flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
+
 #card {
-    //flex: 1;
-    @extend .col-xl-3, .col-md-3, .col-sm-12;
-    margin: {
-        top: 10px;
-        bottom: 10px;
-    }
+    flex-basis: 30%;
+    //flex: 2;
 }
 
 #form {
-    //flex: 1;
-    @extend .col-xl-4, .col-md-4, .col-sm-12;
+    flex-basis: 70%;
+    //flex: 2;
 }
 
 #list {
     //flex: 1;
-    @extend .col-xl-5, .col-md-5, .col-sm-12;
 }

@@ -1,27 +1,14 @@
 <h4>Contribution list</h4>
-<section id="wrapper">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Contribution name</th>
-        <th>Date from</th>
-        <th>Date to</th>
-        <th>Employee</th>
-        <th id="actions">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let contribution of contributions">
-        <td>{{ contribution.id }}</td>
-        <td>{{ contribution.title }}</td>
-        <td>{{ contribution.datePeriod.from | date : 'yyyy-MM-dd'}}</td>
-        <td>{{ contribution.datePeriod.to | date : 'yyyy-MM-dd'}}</td>
-        <td>{{ contribution.employee.name }}</td>
-        <td>
-          <button class="success" (click)="onEditContribution(contribution)">Edit</button>  |  
-          <button class="danger" (click)="onDeleteContribution(contribution)">Delete</button></td>
-      </tr>
-    </tbody>
-</table>
-</section>
+<article>
+    <section *ngFor="let contribution of contributions">
+      <p>{{ contribution.id }}</p>
+      <p>{{ contribution.title }}</p>
+      <p>Date from: {{ contribution.datePeriod.from | date : 'yyyy-MM-dd'}}</p>
+      <p>Date to {{ contribution.datePeriod.to | date : 'yyyy-MM-dd'}}</p>
+      <p>
+        <button class="success" (click)="onEditContribution(contribution)">Edit</button> 
+        <button class="delete" (click)="onDeleteProject(project)">Delete</button>
+      </p>
+    </section>
+  </article>
+  

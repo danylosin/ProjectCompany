@@ -3,10 +3,10 @@
       <h4>Project details</h4>
       <div>
         <h5>{{ project.title }}</h5>
-        <p> 
-          <strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}} and
-          <strong> to </strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}
-         </p>
+        <div> 
+          <p><strong>From</strong> {{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</p>
+          <p><strong>To</strong>{{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</p>
+        </div>
       </div>
     </section>
     <section id="form">
