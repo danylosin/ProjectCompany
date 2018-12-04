@@ -1,26 +1,29 @@
 @import '../styles.scss';
 
 div {
-    @extend .container-fluid;
+    @extend .container-fluid, .h-100;
 }
 
 div > div {
-    @extend .row;
+    @extend .row, .h-100;
+    flex-wrap: nowrap;
 }
 
+@media screen and (max-width: 400px) {
+    div > div {
+        flex-wrap: wrap;
+    }
+}
 aside {
-    @extend .order-1, .col;
+    @extend .order-1, .col, .h-100;
     flex: 0 0 200px;
     background-color: grey;
 }
 
 main {
-    @extend .order-2, .col;
+    @extend .order-2, .col, .h-100;
 }
 
-footer {
- //@extend .bg-primary, .fixed-bottom;
-}
 
 header {
     margin-bottom: 70px;

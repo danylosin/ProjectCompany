@@ -1,29 +1,27 @@
 @import '../../../styles';
 
 article {
-    @extend .col-xl-12;
+    //@extend .col-xl-12;
+    @extend .row;
+    //display: flex;
+    //flex-wrap: wrap;
 }
 
-section {
-    @extend .card;
+#card {
+    //flex: 1;
+    @extend .col-xl-3, .col-md-3, .col-sm-12;
     margin: {
         top: 10px;
         bottom: 10px;
     }
 }
 
-h4 {
-    margin-top: 20px;
+#form {
+    //flex: 1;
+    @extend .col-xl-4, .col-md-4, .col-sm-12;
 }
 
-h5 {
-    @extend .card-title;
-}
-
-div {
-    @extend .card-body;
-}
-
-p {
-    @extend .card-text;
+#list {
+    //flex: 1;
+    @extend .col-xl-5, .col-md-5, .col-sm-12;
 }

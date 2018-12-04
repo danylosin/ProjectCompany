@@ -1,5 +1,9 @@
 @import '../../../styles';
 
+#wrapper {
+    @extend .table-responsive;
+}
+
 table {
     @extend .table;
 }
@@ -14,4 +18,8 @@ button.danger {
 
 button.success {
     @extend .btn-success;
+}
+
+#actions { 
+    min-width: 200px;
 }

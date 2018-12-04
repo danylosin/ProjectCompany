@@ -1,7 +1,7 @@
 @import '../../../styles';
 
 div {
-   @extend .table-responsive;
+   @extend .table-responsive-sm;
 }
 table {
     @extend .table;

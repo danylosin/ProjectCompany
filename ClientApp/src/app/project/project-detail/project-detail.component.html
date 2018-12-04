@@ -1,6 +1,6 @@
 <article *ngIf="isLoaded">
-    <h4>Project details</h4>
-    <section>
+    <section id="card">
+      <h4>Project details</h4>
       <div>
         <h5>{{ project.title }}</h5>
         <p> 
@@ -9,12 +9,16 @@
          </p>
       </div>
     </section>
-  <app-new-contribution [employees]="employeesForForm" 
-                        (onSubmitFormEvent)="createContribution($event)" 
-                        [selectedContribution]="editingContribution">
-  </app-new-contribution>
-  <app-contribution-list [contributions]="contributions" 
-                         (onDeleteContributionEvent)="deleteContribution($event)" 
-                         (onEditContributionEvent)="editContribution($event)">
-  </app-contribution-list>
+    <section id="form">
+      <app-new-contribution [employees]="employeesForForm" 
+      (onSubmitFormEvent)="createContribution($event)" 
+      [selectedContribution]="editingContribution">
+      </app-new-contribution>
+    </section>
+    <section id="list">
+      <app-contribution-list [contributions]="contributions" 
+      (onDeleteContributionEvent)="deleteContribution($event)" 
+      (onEditContributionEvent)="editContribution($event)">
+      </app-contribution-list>
+    </section>
 </article>

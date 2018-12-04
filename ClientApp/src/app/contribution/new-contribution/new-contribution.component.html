@@ -1,5 +1,4 @@
-<article>
-  <h4 *ngIf="selectedContribution?.title; else adding">Editing {{ selectedContribution?.title }}</h4>
+<h4 *ngIf="selectedContribution?.title; else adding">Editing {{ selectedContribution?.title }}</h4>
   <ng-template #adding>
     <h4>Adding new contribution for project</h4>
   </ng-template>
@@ -42,4 +41,3 @@
     </section>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
-</article>
