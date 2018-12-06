@@ -30,6 +30,9 @@ namespace ProjectCompany.Controllers
                 return Ok(skill);
             }
 
+            if (this.skillService.isUniqueSkillTitle(skill)) {
+                ModelState.AddModelError("Skill", "Enter the unique skill");
+            }
             return UnprocessableEntity(ModelState);
         }
 

@@ -1,6 +1,8 @@
 <h4>Adding new skill</h4>
 <div *ngIf="errors">
-    {{errors.errors}}
+    <div *ngFor="let error of errors.Skill">
+        {{ error }}
+    </div>
 </div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-row">

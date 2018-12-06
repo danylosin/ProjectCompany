@@ -2,8 +2,16 @@
   <section *ngFor="let project of projects">
     <p>{{ project.id }}</p>
     <p><a [routerLink]="[ '/project', project.id ]">{{ project.title }}</a></p>
-    <p>Date from: {{ project.datePeriod.from | date : 'yyyy-MM-dd'}}</p>
-    <p>Date to {{ project.datePeriod.to | date : 'yyyy-MM-dd'}}</p>
+    <section> 
+        <div>
+            <p><strong>From</strong></p>
+            <p><strong>To</strong></p>
+        </div>
+        <div>
+            <p>{{ project.datePeriod.from | date : 'yyyy-MM-dd' }}</p>
+            <p>{{ project.datePeriod.to | date : 'yyyy-MM-dd' }}</p>
+        </div>
+    </section>
     <p><button class="delete" (click)="onDeleteProject(project)">Delete</button></p>
   </section>
 </article>

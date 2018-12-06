@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { SkillService } from '../skill.service';
 import { FormBuilder, Form, FormGroup, Validators } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { FormBuilder, Form, FormGroup, Validators } from '@angular/forms';
 })
 export class NewSkillComponent implements OnInit {
   form: FormGroup; 
-  @Input() errors: [];
+  @Input() errors: {};
   @Output() onSubmitFormEvent = new EventEmitter<FormGroup>();
 
   constructor(private service: SkillService, private fb: FormBuilder) { }
